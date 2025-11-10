@@ -1,0 +1,143 @@
+{
+  "name": "ICS Projects - Attack Techniques",
+  "versions": {
+    "attack": "14",
+    "navigator": "4.9.4",
+    "layer": "4.5"
+  },
+  "domain": "ics-attack",
+  "description": "MITRE ICS ATT&CK techniques mapped to Stephen's ICS security projects",
+  "filters": {
+    "platforms": ["Windows", "Linux", "Engineering Workstation", "Field Controller/RTU/PLC/IED", "Control Server"]
+  },
+  "sorting": 0,
+  "layout": {
+    "layout": "side",
+    "aggregateFunction": "average",
+    "showID": true,
+    "showName": true,
+    "showAggregateScores": false,
+    "countUnscored": false
+  },
+  "hideDisabled": false,
+  "techniques": [
+    {
+      "techniqueID": "T0885",
+      "tactic": "initial-access-ics",
+      "color": "#ff6666",
+      "comment": "DNP3 Timing Attack - Uses standard DNP3 ports (20000, 19999)",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Project",
+          "value": "DNP3 Timing Attack"
+        }
+      ],
+      "links": [
+        {
+          "label": "GitHub Project",
+          "url": "https://github.com/ladderlogix/DNP3TimmingAttack"
+        }
+      ],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T0836",
+      "tactic": "impair-process-control-ics",
+      "color": "#ff6666",
+      "comment": "DNP3 Timing Attack - Modifies time synchronization parameters",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Project",
+          "value": "DNP3 Timing Attack"
+        }
+      ],
+      "links": [
+        {
+          "label": "GitHub Project",
+          "url": "https://github.com/ladderlogix/DNP3TimmingAttack"
+        }
+      ],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T0889",
+      "tactic": "inhibit-response-function-ics",
+      "color": "#ff6666",
+      "comment": "DNP3 Timing Attack - Affects time-dependent program behavior",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Project",
+          "value": "DNP3 Timing Attack"
+        }
+      ],
+      "links": [
+        {
+          "label": "GitHub Project",
+          "url": "https://github.com/ladderlogix/DNP3TimmingAttack"
+        }
+      ],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T0831",
+      "tactic": "impair-process-control-ics",
+      "color": "#ff6666",
+      "comment": "DNP3 Timing Attack - Manipulates control through time synchronization",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Project",
+          "value": "DNP3 Timing Attack"
+        }
+      ],
+      "links": [
+        {
+          "label": "GitHub Project",
+          "url": "https://github.com/ladderlogix/DNP3TimmingAttack"
+        }
+      ],
+      "showSubtechniques": false
+    },
+    {
+      "techniqueID": "T0809",
+      "tactic": "impact-ics",
+      "color": "#ff6666",
+      "comment": "DNP3 Timing Attack - Time manipulation can corrupt logs and historical data",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Project",
+          "value": "DNP3 Timing Attack"
+        }
+      ],
+      "links": [
+        {
+          "label": "GitHub Project",
+          "url": "https://github.com/ladderlogix/DNP3TimmingAttack"
+        }
+      ],
+      "showSubtechniques": false
+    }
+  ],
+  "gradient": {
+    "colors": [
+      "#ffffff",
+      "#ff6666"
+    ],
+    "minValue": 0,
+    "maxValue": 100
+  },
+  "legendItems": [
+    {
+      "label": "DNP3 Timing Attack Project",
+      "color": "#ff6666"
+    }
+  ],
+  "metadata": [],
+  "links": [],
+  "showTacticRowBackground": true,
+  "tacticRowBackground": "#dddddd"
+}
