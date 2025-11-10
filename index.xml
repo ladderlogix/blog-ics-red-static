@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Stephen's blog</title><link>https://blog.ics.red/</link><description>Recent content on Stephen's blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 16 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ics.red/index.xml" rel="self" type="application/rss+xml"/><item><title>Homelab</title><link>https://blog.ics.red/posts/homelab/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://blog.ics.red/posts/homelab/</guid><description>&lt;h1 id="my-homelab-a-cybersecurity-professionals-hardware-paradise">My Homelab: A Cybersecurity Professional&amp;rsquo;s Hardware Paradise
+&lt;/h1>&lt;p>Welcome to my homelab - a carefully crafted environment that serves as both my learning playground and professional development space. What started as a simple setup has evolved into a comprehensive infrastructure that supports everything from virtualization and networking to industrial control systems and hardware hacking.&lt;/p>
+&lt;p>&lt;em>[Image placeholder: Overview shot of the entire homelab setup]&lt;/em>&lt;/p>
+&lt;h2 id="the-heart-of-operations-central-server-rack">The Heart of Operations: Central Server Rack
+&lt;/h2>&lt;p>My homelab is anchored by a compact central server rack that houses the core networking and compute infrastructure. This rack serves as the nerve center for all operations.&lt;/p>
+&lt;h3 id="core-infrastructure">Core Infrastructure
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>HPE ProLiant DL350 Gen10&lt;/strong>: My primary ESXi hypervisor server, handling the majority of virtual machines and services&lt;/li>
+&lt;li>&lt;strong>4TB SSD NAS&lt;/strong>: Connected via 10Gb link for high-speed external storage, providing fast access to VM datastores and backup storage&lt;/li>
+&lt;li>&lt;strong>Cisco 2960L Switch&lt;/strong>: The main distribution switch that aggregates connections to all devices throughout the lab&lt;/li>
+&lt;li>&lt;strong>pfSense Firewall&lt;/strong>: My primary security gateway connecting to the ISP, providing advanced firewall capabilities, VPN access, and network segmentation&lt;/li>
+&lt;li>&lt;strong>Wireless Access Point&lt;/strong>: Ensuring wireless connectivity throughout the lab space&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>[Image placeholder: Close-up of the central server rack showing the organized cable management and equipment]&lt;/em>&lt;/p>
+&lt;p>The 10Gb connection between the ESXi host and NAS ensures that storage doesn&amp;rsquo;t become a bottleneck for VM performance, while the Cisco switch provides enterprise-grade switching with VLAN capabilities for network segmentation.&lt;/p>
+&lt;h2 id="the-workshop-full-height-server-rack--workbench">The Workshop: Full-Height Server Rack &amp;amp; Workbench
+&lt;/h2>&lt;p>Recently, I expanded my setup with a full-height server rack that doubles as my primary workbench. This addition has transformed my capability to work on hardware projects and conduct hands-on security research.&lt;/p>
+&lt;h3 id="power-and-safety-controls">Power and Safety Controls
+&lt;/h3>&lt;p>At the top of the rack sits an &lt;strong>SEL-351S protective relay&lt;/strong>, a professional-grade power system protection device that controls the bench power through a breaker system while providing comprehensive monitoring. This ensures safe operation of all equipment and allows me to practice with industrial-grade protection systems.&lt;/p>
+&lt;p>&lt;em>[Image placeholder: SEL-351S relay unit and power distribution setup]&lt;/em>&lt;/p>
+&lt;h3 id="hardware-hacking-station">Hardware Hacking Station
+&lt;/h3>&lt;p>The workbench portion is equipped for serious hardware analysis and modification:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Digital Oscilloscope&lt;/strong>: For signal analysis and reverse engineering&lt;/li>
+&lt;li>&lt;strong>Soldering station and precision tools&lt;/strong>: For component-level work&lt;/li>
+&lt;li>&lt;strong>Logic analyzers and multimeters&lt;/strong>: For circuit analysis&lt;/li>
+&lt;li>&lt;strong>Anti-static workspace&lt;/strong>: Proper ESD protection for sensitive components&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>[Image placeholder: Workbench setup with oscilloscope, tools, and current project]&lt;/em>&lt;/p>
+&lt;p>This space allows me to dive deep into hardware security, firmware analysis, and IoT device research - skills that are increasingly valuable in cybersecurity.&lt;/p>
+&lt;h2 id="industrial-control-systems-ics-laboratory">Industrial Control Systems (ICS) Laboratory
+&lt;/h2>&lt;p>One of the most unique aspects of my homelab is the dedicated ICS wall - a plywood-mounted display of industrial control systems that provides hands-on experience with operational technology (OT) security.&lt;/p>
+&lt;p>&lt;em>[Image placeholder: Full view of the ICS wall showing all mounted devices]&lt;/em>&lt;/p>
+&lt;h3 id="current-ics-equipment">Current ICS Equipment
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>Arduino OPTA&lt;/strong>: A modern industrial-grade programmable logic controller that bridges IT and OT worlds&lt;/li>
+&lt;li>&lt;strong>Allen-Bradley MicroLogix 1100&lt;/strong>: A classic PLC commonly found in industrial environments&lt;/li>
+&lt;li>&lt;strong>Cisco ISA Firewall&lt;/strong>: Specialized security appliance for industrial networks&lt;/li>
+&lt;li>&lt;strong>Honeywell Cipher 50&lt;/strong>: Industrial communication and control device&lt;/li>
+&lt;li>&lt;strong>Schneider Electric PLC&lt;/strong>: Additional programmable logic controller for diverse testing scenarios&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>[Image placeholder: Close-up shots of individual ICS components]&lt;/em>&lt;/p>
+&lt;p>This setup allows me to:&lt;/p>
+&lt;ul>
+&lt;li>Practice ICS security assessment techniques&lt;/li>
+&lt;li>Test industrial protocol analysis tools&lt;/li>
+&lt;li>Experiment with OT network segmentation&lt;/li>
+&lt;li>Develop skills in both offensive and defensive ICS security&lt;/li>
+&lt;/ul>
+&lt;h2 id="network-security-and-monitoring">Network Security and Monitoring
+&lt;/h2>&lt;p>Security monitoring is integrated throughout the infrastructure with &lt;strong>Security Onion&lt;/strong> running on VMware, connected to a span port on the Cisco switch. This provides comprehensive network visibility and allows me to:&lt;/p>
+&lt;ul>
+&lt;li>Monitor all network traffic for suspicious activity&lt;/li>
+&lt;li>Practice with enterprise security tools&lt;/li>
+&lt;li>Develop custom detection rules&lt;/li>
+&lt;li>Analyze attack patterns and techniques&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>[Image placeholder: Security Onion dashboard or network monitoring display]&lt;/em>&lt;/p>
+&lt;h2 id="why-this-setup-matters">Why This Setup Matters
+&lt;/h2>&lt;p>This homelab represents more than just a collection of hardware - it&amp;rsquo;s a comprehensive learning environment that spans:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Enterprise IT&lt;/strong>: Through virtualization and networking infrastructure&lt;/li>
+&lt;li>&lt;strong>Cybersecurity&lt;/strong>: Via monitoring, analysis, and testing capabilities&lt;/li>
+&lt;li>&lt;strong>Industrial Security&lt;/strong>: Through the ICS laboratory components&lt;/li>
+&lt;li>&lt;strong>Hardware Security&lt;/strong>: Via the dedicated workbench and analysis tools&lt;/li>
+&lt;/ul>
+&lt;p>The combination allows me to develop skills across the full spectrum of cybersecurity domains, from traditional IT security to the growing field of OT/ICS security.&lt;/p>
+&lt;h2 id="future-expansion-plans">Future Expansion Plans
+&lt;/h2>&lt;p>I&amp;rsquo;m always looking to expand and improve the lab. Current plans include:&lt;/p>
+&lt;ul>
+&lt;li>Adding more diverse ICS equipment from different manufacturers&lt;/li>
+&lt;li>Implementing additional network segments for more complex scenarios&lt;/li>
+&lt;li>Expanding the hardware analysis capabilities&lt;/li>
+&lt;li>Adding more storage capacity for long-term data retention&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>[Image placeholder: Future equipment or expansion area]&lt;/em>&lt;/p>
+&lt;h2 id="conclusion">Conclusion
+&lt;/h2>&lt;p>Building and maintaining this homelab has been an incredible journey in both technical learning and hands-on skill development. It provides a safe space to experiment, learn, and push the boundaries of what&amp;rsquo;s possible in cybersecurity research and education.&lt;/p>
+&lt;p>Whether you&amp;rsquo;re just starting your cybersecurity journey or looking to expand into specialized areas like ICS security, I encourage you to start building your own lab environment. Start small, grow gradually, and most importantly - have fun learning!&lt;/p>
+&lt;hr>
+&lt;p>&lt;em>Have questions about any of the equipment or setup? Feel free to reach out - I&amp;rsquo;m always happy to discuss homelab builds and cybersecurity infrastructure.&lt;/em>&lt;/p></description></item><item><title>Resume</title><link>https://blog.ics.red/posts/resume/</link><pubDate>Fri, 16 May 2025 00:00:00 +0000</pubDate><guid>https://blog.ics.red/posts/resume/</guid><description>&lt;p>&lt;a class="link" href="https://bucket.ics.red/StephenGlombicki_Sept9.pdf" target="_blank" rel="noopener"
+>https://bucket.ics.red/StephenGlombicki_Sept9.pdf&lt;/a>&lt;/p></description></item><item><title>Dangers of IoT Devices Presentation</title><link>https://blog.ics.red/posts/iot-presentation/</link><pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate><guid>https://blog.ics.red/posts/iot-presentation/</guid><description>&lt;p>This was a powerpoint slides for a presentation I gave to CvCISO coffee talk. You can download here &lt;a class="link" href="https://bucket.ics.red/IoTPres.pptx" target="_blank" rel="noopener"
+>https://bucket.ics.red/IoTPres.pptx&lt;/a>&lt;/p></description></item><item><title>About</title><link>https://blog.ics.red/page/about/</link><pubDate>Thu, 30 Jan 2025 00:00:00 +0000</pubDate><guid>https://blog.ics.red/page/about/</guid><description>&lt;p>I am a high school student interested in cybersecurity and operational technology (OT).&lt;/p>
+&lt;p>Github&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://github.com/ladderlogix" target="_blank" rel="noopener"
+>https://github.com/ladderlogix&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Linkedin&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://linkedin.com/in/stephenglombicki" target="_blank" rel="noopener"
+>https://linkedin.com/in/stephenglombicki&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Discord&lt;/p>
+&lt;ul>
+&lt;li>Ladderlogic&lt;/li>
+&lt;/ul></description></item><item><title>Blog</title><link>https://blog.ics.red/page/blog/</link><pubDate>Thu, 30 Jan 2025 00:00:00 +0000</pubDate><guid>https://blog.ics.red/page/blog/</guid><description/></item><item><title>WWHF 2024 Badge Hacking Writeup</title><link>https://blog.ics.red/posts/wwhf-2024-badge/</link><pubDate>Sun, 20 Oct 2024 00:00:00 +0000</pubDate><guid>https://blog.ics.red/posts/wwhf-2024-badge/</guid><description>&lt;h1 id="wwhf-2024-badge-hacking-writeup">WWHF 2024 Badge Hacking WriteUp
+&lt;/h1>&lt;p>Should automatically redirect to site if not.
+Go to wwhf2024.ics.red&lt;/p></description></item><item><title>CyberForce 2024 Adventure Writeup</title><link>https://blog.ics.red/posts/cyberforce-adventure-2024/</link><pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate><guid>https://blog.ics.red/posts/cyberforce-adventure-2024/</guid><description>&lt;p>Should redirct you to writeup site&lt;/p></description></item><item><title>Search</title><link>https://blog.ics.red/page/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://blog.ics.red/page/search/</guid><description/></item></channel></rss>
