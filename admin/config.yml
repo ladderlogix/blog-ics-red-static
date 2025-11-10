@@ -1,6 +1,6 @@
 backend:
   name: proxy
-  proxy_url: http://localhost:8081/api/v1
+  proxy_url: http://192.168.103.78:8081/api/v1
 
 # Enable local backend for editing without server
 local_backend: true
@@ -18,7 +18,7 @@ collections:
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Description", name: "description", widget: "text", required: false}
-      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Date", name: "date", widget: "datetime", required: false}
       - {label: "Draft", name: "draft", widget: "boolean", default: false}
       - {label: "Categories", name: "categories", widget: "list", required: false}
       - {label: "Body", name: "body", widget: "markdown"}
@@ -32,5 +32,5 @@ collections:
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Description", name: "description", widget: "text", required: false}
-      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Date", name: "date", widget: "datetime", required: false}
       - {label: "Body", name: "body", widget: "markdown"}
