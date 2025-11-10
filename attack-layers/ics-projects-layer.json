@@ -17,9 +17,11 @@
     "showID": true,
     "showName": true,
     "showAggregateScores": false,
-    "countUnscored": false
+    "countUnscored": false,
+    "showLegend": true
   },
   "hideDisabled": false,
+  "selectTechniquesAcrossTactics": true,
   "techniques": [
     {
       "techniqueID": "T0885",
