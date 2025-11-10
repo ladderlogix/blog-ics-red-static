@@ -5,23 +5,6 @@
     "navigator": "5.2.0",
     "layer": "4.5"
   },
-  "domain": "ics-attack",
-  "description": "MITRE ICS ATT&CK techniques mapped to Stephen's ICS security projects",
-  "filters": {
-    "platforms": ["Windows", "Linux", "Engineering Workstation", "Field Controller/RTU/PLC/IED", "Control Server"]
-  },
-  "sorting": 0,
-  "layout": {
-    "layout": "side",
-    "aggregateFunction": "average",
-    "showID": true,
-    "showName": true,
-    "showAggregateScores": false,
-    "countUnscored": false,
-    "showLegend": true
-  },
-  "hideDisabled": false,
-  "selectTechniquesAcrossTactics": true,
   "techniques": [
     {
       "techniqueID": "T0885",
