@@ -7,6 +7,9 @@
   },
   "domain": "ics-attack",
   "description": "MITRE ICS ATT&CK techniques mapped to Stephen's ICS security projects",
+  "filters": {
+    "platforms": ["Windows", "Linux", "Engineering Workstation", "Field Controller/RTU/PLC/IED", "Control Server"]
+  },
   "sorting": 0,
   "layout": {
     "layout": "side",
@@ -22,6 +25,7 @@
   "techniques": [
     {
       "techniqueID": "T0885",
+      "tactic": "initial-access-ics",
       "color": "#ff6666",
       "comment": "DNP3 Timing Attack - Uses standard DNP3 ports (20000, 19999)",
       "enabled": true,
@@ -41,6 +45,7 @@
     },
     {
       "techniqueID": "T0836",
+      "tactic": "impair-process-control-ics",
       "color": "#ff6666",
       "comment": "DNP3 Timing Attack - Modifies time synchronization parameters",
       "enabled": true,
@@ -60,6 +65,7 @@
     },
     {
       "techniqueID": "T0889",
+      "tactic": "inhibit-response-function-ics",
       "color": "#ff6666",
       "comment": "DNP3 Timing Attack - Affects time-dependent program behavior",
       "enabled": true,
@@ -79,6 +85,7 @@
     },
     {
       "techniqueID": "T0831",
+      "tactic": "impair-process-control-ics",
       "color": "#ff6666",
       "comment": "DNP3 Timing Attack - Manipulates control through time synchronization",
       "enabled": true,
@@ -98,6 +105,7 @@
     },
     {
       "techniqueID": "T0809",
+      "tactic": "impact-ics",
       "color": "#ff6666",
       "comment": "DNP3 Timing Attack - Time manipulation can corrupt logs and historical data",
       "enabled": true,
@@ -131,5 +139,7 @@
     }
   ],
   "metadata": [],
-  "links": []
+  "links": [],
+  "showTacticRowBackground": true,
+  "tacticRowBackground": "#dddddd"
 }

@@ -1,3 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Writeups on Stephen's blog</title><link>https://blog.ics.red/categories/writeups/</link><description>Recent content in Writeups on Stephen's blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 20 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ics.red/categories/writeups/index.xml" rel="self" type="application/rss+xml"/><item><title>WWHF 2024 Badge Hacking Writeup</title><link>https://blog.ics.red/posts/wwhf-2024-badge/</link><pubDate>Sun, 20 Oct 2024 00:00:00 +0000</pubDate><guid>https://blog.ics.red/posts/wwhf-2024-badge/</guid><description>&lt;h1 id="wwhf-2024-badge-hacking-writeup">WWHF 2024 Badge Hacking WriteUp
-&lt;/h1>&lt;p>Should automatically redirect to site if not.
-Go to wwhf2024.ics.red&lt;/p></description></item><item><title>CyberForce 2024 Adventure Writeup</title><link>https://blog.ics.red/posts/cyberforce-adventure-2024/</link><pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate><guid>https://blog.ics.red/posts/cyberforce-adventure-2024/</guid><description>&lt;p>Should redirct you to writeup site&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Writeups on Stephen&#39;s blog</title>
+        <link>https://blog.ics.red/categories/writeups/</link>
+        <description>Recent content in Writeups on Stephen&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 20 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ics.red/categories/writeups/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>WWHF 2024 Badge Hacking Writeup</title>
+        <link>https://blog.ics.red/posts/wwhf-2024-badge/</link>
+        <pubDate>Sun, 20 Oct 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ics.red/posts/wwhf-2024-badge/</guid>
+        <description>&lt;h1 id=&#34;wwhf-2024-badge-hacking-writeup&#34;&gt;WWHF 2024 Badge Hacking WriteUp
+&lt;/h1&gt;&lt;p&gt;Should automatically redirect to site if not.
+Go to wwhf2024.ics.red&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>CyberForce 2024 Adventure Writeup</title>
+        <link>https://blog.ics.red/posts/cyberforce-adventure-2024/</link>
+        <pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ics.red/posts/cyberforce-adventure-2024/</guid>
+        <description>&lt;p&gt;Should redirct you to writeup site&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

