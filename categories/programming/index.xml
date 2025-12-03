@@ -1,242 +1,136 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>Programming on Stephen&#39;s blog</title>
-        <link>https://blog.ics.red/categories/programming/</link>
-        <description>Recent content in Programming on Stephen&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <lastBuildDate>Tue, 02 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ics.red/categories/programming/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Advent of Code 2025: Solving Puzzles with Industrial Ladder Logic</title>
-        <link>https://blog.ics.red/posts/advent-of-code-2025-ladder-logic/</link>
-        <pubDate>Tue, 02 Dec 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://blog.ics.red/posts/advent-of-code-2025-ladder-logic/</guid>
-        <description>&lt;h2 id=&#34;the-challenge-advent-of-code-meets-industrial-automation&#34;&gt;The Challenge: Advent of Code Meets Industrial Automation
-&lt;/h2&gt;&lt;p&gt;What happens when you combine &lt;a class=&#34;link&#34; href=&#34;https://adventofcode.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Advent of Code&lt;/a&gt; with industrial control systems? Ladder logic solutions running on actual PLCs.&lt;/p&gt;
-&lt;p&gt;This year, I solved Advent of Code 2025 puzzles using &lt;strong&gt;ladder logic on an Allen-Bradley Micro870 PLC&lt;/strong&gt;, with a FactoryTalk Optix HMI for visualization.&lt;/p&gt;
-&lt;p&gt;Github Repo with Code: &lt;a class=&#34;link&#34; href=&#34;https://github.com/ladderlogix/Advent-of-Code-2025&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/ladderlogix/Advent-of-Code-2025&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;hardware-setup&#34;&gt;Hardware Setup
-&lt;/h2&gt;&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Component&lt;/th&gt;
-          &lt;th&gt;Model&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;PLC&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;Allen-Bradley Micro870 (2080-L70E-24QBBN)&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;HMI&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;FactoryTalk Optix&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;Communication&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;Ethernet/IP&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;day-1-secret-entrance&#34;&gt;Day 1: Secret Entrance
-&lt;/h2&gt;&lt;h3 id=&#34;the-problem&#34;&gt;The Problem
-&lt;/h3&gt;&lt;p&gt;You arrive at the secret entrance to the North Pole base, but the password has changed. A safe with a dial (numbers 0-99) holds the answer. Your puzzle input contains rotation instructions like &lt;code&gt;L68&lt;/code&gt; (left 68 clicks) or &lt;code&gt;R48&lt;/code&gt; (right 48 clicks).&lt;/p&gt;
-&lt;p&gt;The dial starts at &lt;strong&gt;50&lt;/strong&gt; and wraps around (left from 0 goes to 99, right from 99 goes to 0).&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Part 1&lt;/strong&gt;: Count how many times the dial &lt;strong&gt;ends&lt;/strong&gt; on position 0 after a rotation.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Part 2&lt;/strong&gt;: Count how many times the dial &lt;strong&gt;passes through or lands on&lt;/strong&gt; position 0 during ALL rotations (including mid-rotation).&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;My Answers&lt;/strong&gt;: Part 1 = &lt;strong&gt;1011&lt;/strong&gt;, Part 2 = &lt;strong&gt;5937&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;video-demonstrations&#34;&gt;Video Demonstrations
-&lt;/h2&gt;&lt;h3 id=&#34;day-1-part-1&#34;&gt;Day 1 Part 1
-&lt;/h3&gt;&lt;div class=&#34;video-wrapper&#34;&gt;
-    &lt;iframe loading=&#34;lazy&#34; 
-            src=&#34;https://www.youtube.com/embed/exmJLdwC1RU&#34; 
-            allowfullscreen 
-            title=&#34;YouTube Video&#34;
-    &gt;
-    &lt;/iframe&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&#34;day-1-part-2&#34;&gt;Day 1 Part 2
-&lt;/h3&gt;&lt;div class=&#34;video-wrapper&#34;&gt;
-    &lt;iframe loading=&#34;lazy&#34; 
-            src=&#34;https://www.youtube.com/embed/s28MHhT4mHE&#34; 
-            allowfullscreen 
-            title=&#34;YouTube Video&#34;
-    &gt;
-    &lt;/iframe&gt;
-&lt;/div&gt;
-
-&lt;hr&gt;
-&lt;h2 id=&#34;part-1-solution&#34;&gt;Part 1 Solution
-&lt;/h2&gt;&lt;p&gt;The algorithm processes 4,146 rotation instructions, tracking position on a circular 0-99 dial.&lt;/p&gt;
-&lt;h3 id=&#34;rung-0---reset&#34;&gt;Rung 0 - Reset
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung1.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 1&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-1---start-processing&#34;&gt;Rung 1 - Start Processing
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung2.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 2&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-2---check-if-complete&#34;&gt;Rung 2 - Check If Complete
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung3.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 3&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-3---get-direction-from-array&#34;&gt;Rung 3 - Get Direction From Array
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung4.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 4&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-4---get-distance-from-array&#34;&gt;Rung 4 - Get Distance From Array
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung5.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 5&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-5---add-direction--right&#34;&gt;Rung 5 - Add (Direction = Right)
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung5.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 5&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-6---subtract-direction--left&#34;&gt;Rung 6 - Subtract (Direction = Left)
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung6.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 6&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-7---modulo-wraparound&#34;&gt;Rung 7 - Modulo Wraparound
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung7.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 7&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-8---handle-negative-values&#34;&gt;Rung 8 - Handle Negative Values
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung8.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 8&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-9---count-zeros&#34;&gt;Rung 9 - Count Zeros
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung9.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 9&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-10---advance-step&#34;&gt;Rung 10 - Advance Step
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung10.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 10&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;part-2-solution&#34;&gt;Part 2 Solution
-&lt;/h2&gt;&lt;p&gt;Part 2 requires counting every time the dial crosses position 0, not just when it lands there. This adds significant complexity with 6 different cases to handle.&lt;/p&gt;
-&lt;h3 id=&#34;rung-11---zero-crossing-calculation&#34;&gt;Rung 11 - Zero Crossing Calculation
-&lt;/h3&gt;&lt;p&gt;This massive branching rung handles all the edge cases for counting zero crossings:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/part2/Rung11.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 11&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-12---accumulate-zero-crossings&#34;&gt;Rung 12 - Accumulate Zero Crossings
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/part2/Rung12.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 12&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-13---advance-step&#34;&gt;Rung 13 - Advance Step
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/part2/Rung13.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 13&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Stay tuned for more days of Advent of Code solved with ladder logic!&lt;/em&gt;&lt;/p&gt;
-</description>
-        </item>
-        
-    </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Programming on Stephen's blog</title><link>https://blog.ics.red/categories/programming/</link><description>Recent content in Programming on Stephen's blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 02 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ics.red/categories/programming/index.xml" rel="self" type="application/rss+xml"/><item><title>Advent of Code 2025: Solving Puzzles with Industrial Ladder Logic</title><link>https://blog.ics.red/posts/advent-of-code-2025-ladder-logic/</link><pubDate>Tue, 02 Dec 2025 00:00:00 +0000</pubDate><guid>https://blog.ics.red/posts/advent-of-code-2025-ladder-logic/</guid><description>&lt;h2 id="the-challenge-advent-of-code-meets-industrial-automation">The Challenge: Advent of Code Meets Industrial Automation
+&lt;/h2>&lt;p>What happens when you combine &lt;a class="link" href="https://adventofcode.com/" target="_blank" rel="noopener"
+>Advent of Code&lt;/a> with industrial control systems? Ladder logic solutions running on actual PLCs.&lt;/p>
+&lt;p>This year, I solved Advent of Code 2025 puzzles using &lt;strong>ladder logic on an Allen-Bradley Micro870 PLC&lt;/strong>, with a FactoryTalk Optix HMI for visualization.&lt;/p>
+&lt;p>Github Repo with Code: &lt;a class="link" href="https://github.com/ladderlogix/Advent-of-Code-2025" target="_blank" rel="noopener"
+>https://github.com/ladderlogix/Advent-of-Code-2025&lt;/a>&lt;/p>
+&lt;hr>
+&lt;h2 id="hardware-setup">Hardware Setup
+&lt;/h2>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Component&lt;/th>
+&lt;th>Model&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>PLC&lt;/strong>&lt;/td>
+&lt;td>Allen-Bradley Micro870 (2080-L70E-24QBBN)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>HMI&lt;/strong>&lt;/td>
+&lt;td>FactoryTalk Optix&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Communication&lt;/strong>&lt;/td>
+&lt;td>Ethernet/IP&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h2 id="day-1-secret-entrance">Day 1: Secret Entrance
+&lt;/h2>&lt;h3 id="the-problem">The Problem
+&lt;/h3>&lt;p>You arrive at the secret entrance to the North Pole base, but the password has changed. A safe with a dial (numbers 0-99) holds the answer. Your puzzle input contains rotation instructions like &lt;code>L68&lt;/code> (left 68 clicks) or &lt;code>R48&lt;/code> (right 48 clicks).&lt;/p>
+&lt;p>The dial starts at &lt;strong>50&lt;/strong> and wraps around (left from 0 goes to 99, right from 99 goes to 0).&lt;/p>
+&lt;p>&lt;strong>Part 1&lt;/strong>: Count how many times the dial &lt;strong>ends&lt;/strong> on position 0 after a rotation.&lt;/p>
+&lt;p>&lt;strong>Part 2&lt;/strong>: Count how many times the dial &lt;strong>passes through or lands on&lt;/strong> position 0 during ALL rotations (including mid-rotation).&lt;/p>
+&lt;hr>
+&lt;h2 id="video-demonstrations">Video Demonstrations
+&lt;/h2>&lt;h3 id="day-1-part-1">Day 1 Part 1
+&lt;/h3>&lt;div class="video-wrapper">
+&lt;iframe loading="lazy"
+src="https://www.youtube.com/embed/exmJLdwC1RU"
+allowfullscreen
+title="YouTube Video"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;h3 id="day-1-part-2">Day 1 Part 2
+&lt;/h3>&lt;div class="video-wrapper">
+&lt;iframe loading="lazy"
+src="https://www.youtube.com/embed/s28MHhT4mHE"
+allowfullscreen
+title="YouTube Video"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;hr>
+&lt;h2 id="part-1-solution">Part 1 Solution
+&lt;/h2>&lt;p>The algorithm processes 4,146 rotation instructions, tracking position on a circular 0-99 dial.&lt;/p>
+&lt;h3 id="rung-0---reset">Rung 0 - Reset
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung1.png"
+loading="lazy"
+alt="Rung 1"
+>&lt;/p>
+&lt;h3 id="rung-1---start-processing">Rung 1 - Start Processing
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung2.png"
+loading="lazy"
+alt="Rung 2"
+>&lt;/p>
+&lt;h3 id="rung-2---check-if-complete">Rung 2 - Check If Complete
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung3.png"
+loading="lazy"
+alt="Rung 3"
+>&lt;/p>
+&lt;h3 id="rung-3---get-direction-from-array">Rung 3 - Get Direction From Array
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung4.png"
+loading="lazy"
+alt="Rung 4"
+>&lt;/p>
+&lt;h3 id="rung-4---get-distance-from-array">Rung 4 - Get Distance From Array
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung5.png"
+loading="lazy"
+alt="Rung 5"
+>&lt;/p>
+&lt;h3 id="rung-5---add-direction--right">Rung 5 - Add (Direction = Right)
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung5.png"
+loading="lazy"
+alt="Rung 5"
+>&lt;/p>
+&lt;h3 id="rung-6---subtract-direction--left">Rung 6 - Subtract (Direction = Left)
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung6.png"
+loading="lazy"
+alt="Rung 6"
+>&lt;/p>
+&lt;h3 id="rung-7---modulo-wraparound">Rung 7 - Modulo Wraparound
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung7.png"
+loading="lazy"
+alt="Rung 7"
+>&lt;/p>
+&lt;h3 id="rung-8---handle-negative-values">Rung 8 - Handle Negative Values
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung8.png"
+loading="lazy"
+alt="Rung 8"
+>&lt;/p>
+&lt;h3 id="rung-9---count-zeros">Rung 9 - Count Zeros
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung9.png"
+loading="lazy"
+alt="Rung 9"
+>&lt;/p>
+&lt;h3 id="rung-10---advance-step">Rung 10 - Advance Step
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung10.png"
+loading="lazy"
+alt="Rung 10"
+>&lt;/p>
+&lt;hr>
+&lt;h2 id="part-2-solution">Part 2 Solution
+&lt;/h2>&lt;p>Part 2 requires counting every time the dial crosses position 0, not just when it lands there. This adds significant complexity with 6 different cases to handle.&lt;/p>
+&lt;h3 id="rung-11---zero-crossing-calculation">Rung 11 - Zero Crossing Calculation
+&lt;/h3>&lt;p>This massive branching rung handles all the edge cases for counting zero crossings:&lt;/p>
+&lt;p>&lt;img src="https://blog.ics.red/images/aoc/part2/Rung11.png"
+loading="lazy"
+alt="Rung 11"
+>&lt;/p>
+&lt;h3 id="rung-12---accumulate-zero-crossings">Rung 12 - Accumulate Zero Crossings
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/part2/Rung12.png"
+loading="lazy"
+alt="Rung 12"
+>&lt;/p>
+&lt;h3 id="rung-13---advance-step">Rung 13 - Advance Step
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/part2/Rung13.png"
+loading="lazy"
+alt="Rung 13"
+>&lt;/p>
+&lt;hr>
+&lt;p>&lt;em>Stay tuned for more days of Advent of Code solved with ladder logic!&lt;/em>&lt;/p></description></item></channel></rss>

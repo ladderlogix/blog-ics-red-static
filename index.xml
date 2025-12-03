@@ -1,579 +1,376 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>Stephen&#39;s blog</title>
-        <link>https://blog.ics.red/</link>
-        <description>Recent content on Stephen&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <lastBuildDate>Tue, 02 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ics.red/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Homelab</title>
-        <link>https://blog.ics.red/posts/homelab/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://blog.ics.red/posts/homelab/</guid>
-        <description>&lt;h1 id=&#34;my-homelab-a-cybersecurity-professionals-hardware-paradise&#34;&gt;My Homelab: A Cybersecurity Professional&amp;rsquo;s Hardware Paradise
-&lt;/h1&gt;&lt;p&gt;Welcome to my homelab - a carefully crafted environment that serves as both my learning playground and professional development space. What started as a simple setup has evolved into a comprehensive infrastructure that supports everything from virtualization and networking to industrial control systems and hardware hacking.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;[Image placeholder: Overview shot of the entire homelab setup]&lt;/em&gt;&lt;/p&gt;
-&lt;h2 id=&#34;the-heart-of-operations-central-server-rack&#34;&gt;The Heart of Operations: Central Server Rack
-&lt;/h2&gt;&lt;p&gt;My homelab is anchored by a compact central server rack that houses the core networking and compute infrastructure. This rack serves as the nerve center for all operations.&lt;/p&gt;
-&lt;h3 id=&#34;core-infrastructure&#34;&gt;Core Infrastructure
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;HPE ProLiant DL350 Gen10&lt;/strong&gt;: My primary ESXi hypervisor server, handling the majority of virtual machines and services&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;4TB SSD NAS&lt;/strong&gt;: Connected via 10Gb link for high-speed external storage, providing fast access to VM datastores and backup storage&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Cisco 2960L Switch&lt;/strong&gt;: The main distribution switch that aggregates connections to all devices throughout the lab&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;pfSense Firewall&lt;/strong&gt;: My primary security gateway connecting to the ISP, providing advanced firewall capabilities, VPN access, and network segmentation&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Wireless Access Point&lt;/strong&gt;: Ensuring wireless connectivity throughout the lab space&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;[Image placeholder: Close-up of the central server rack showing the organized cable management and equipment]&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;The 10Gb connection between the ESXi host and NAS ensures that storage doesn&amp;rsquo;t become a bottleneck for VM performance, while the Cisco switch provides enterprise-grade switching with VLAN capabilities for network segmentation.&lt;/p&gt;
-&lt;h2 id=&#34;the-workshop-full-height-server-rack--workbench&#34;&gt;The Workshop: Full-Height Server Rack &amp;amp; Workbench
-&lt;/h2&gt;&lt;p&gt;Recently, I expanded my setup with a full-height server rack that doubles as my primary workbench. This addition has transformed my capability to work on hardware projects and conduct hands-on security research.&lt;/p&gt;
-&lt;h3 id=&#34;power-and-safety-controls&#34;&gt;Power and Safety Controls
-&lt;/h3&gt;&lt;p&gt;At the top of the rack sits an &lt;strong&gt;SEL-351S protective relay&lt;/strong&gt;, a professional-grade power system protection device that controls the bench power through a breaker system while providing comprehensive monitoring. This ensures safe operation of all equipment and allows me to practice with industrial-grade protection systems.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;[Image placeholder: SEL-351S relay unit and power distribution setup]&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;hardware-hacking-station&#34;&gt;Hardware Hacking Station
-&lt;/h3&gt;&lt;p&gt;The workbench portion is equipped for serious hardware analysis and modification:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Digital Oscilloscope&lt;/strong&gt;: For signal analysis and reverse engineering&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Soldering station and precision tools&lt;/strong&gt;: For component-level work&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Logic analyzers and multimeters&lt;/strong&gt;: For circuit analysis&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Anti-static workspace&lt;/strong&gt;: Proper ESD protection for sensitive components&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;[Image placeholder: Workbench setup with oscilloscope, tools, and current project]&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;This space allows me to dive deep into hardware security, firmware analysis, and IoT device research - skills that are increasingly valuable in cybersecurity.&lt;/p&gt;
-&lt;h2 id=&#34;industrial-control-systems-ics-laboratory&#34;&gt;Industrial Control Systems (ICS) Laboratory
-&lt;/h2&gt;&lt;p&gt;One of the most unique aspects of my homelab is the dedicated ICS wall - a plywood-mounted display of industrial control systems that provides hands-on experience with operational technology (OT) security.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;[Image placeholder: Full view of the ICS wall showing all mounted devices]&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;current-ics-equipment&#34;&gt;Current ICS Equipment
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Arduino OPTA&lt;/strong&gt;: A modern industrial-grade programmable logic controller that bridges IT and OT worlds&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Allen-Bradley MicroLogix 1100&lt;/strong&gt;: A classic PLC commonly found in industrial environments&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Cisco ISA Firewall&lt;/strong&gt;: Specialized security appliance for industrial networks&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Honeywell Cipher 50&lt;/strong&gt;: Industrial communication and control device&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Schneider Electric PLC&lt;/strong&gt;: Additional programmable logic controller for diverse testing scenarios&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;[Image placeholder: Close-up shots of individual ICS components]&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;This setup allows me to:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Practice ICS security assessment techniques&lt;/li&gt;
-&lt;li&gt;Test industrial protocol analysis tools&lt;/li&gt;
-&lt;li&gt;Experiment with OT network segmentation&lt;/li&gt;
-&lt;li&gt;Develop skills in both offensive and defensive ICS security&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;network-security-and-monitoring&#34;&gt;Network Security and Monitoring
-&lt;/h2&gt;&lt;p&gt;Security monitoring is integrated throughout the infrastructure with &lt;strong&gt;Security Onion&lt;/strong&gt; running on VMware, connected to a span port on the Cisco switch. This provides comprehensive network visibility and allows me to:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Monitor all network traffic for suspicious activity&lt;/li&gt;
-&lt;li&gt;Practice with enterprise security tools&lt;/li&gt;
-&lt;li&gt;Develop custom detection rules&lt;/li&gt;
-&lt;li&gt;Analyze attack patterns and techniques&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;[Image placeholder: Security Onion dashboard or network monitoring display]&lt;/em&gt;&lt;/p&gt;
-&lt;h2 id=&#34;why-this-setup-matters&#34;&gt;Why This Setup Matters
-&lt;/h2&gt;&lt;p&gt;This homelab represents more than just a collection of hardware - it&amp;rsquo;s a comprehensive learning environment that spans:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Enterprise IT&lt;/strong&gt;: Through virtualization and networking infrastructure&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Cybersecurity&lt;/strong&gt;: Via monitoring, analysis, and testing capabilities&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Industrial Security&lt;/strong&gt;: Through the ICS laboratory components&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Hardware Security&lt;/strong&gt;: Via the dedicated workbench and analysis tools&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The combination allows me to develop skills across the full spectrum of cybersecurity domains, from traditional IT security to the growing field of OT/ICS security.&lt;/p&gt;
-&lt;h2 id=&#34;future-expansion-plans&#34;&gt;Future Expansion Plans
-&lt;/h2&gt;&lt;p&gt;I&amp;rsquo;m always looking to expand and improve the lab. Current plans include:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Adding more diverse ICS equipment from different manufacturers&lt;/li&gt;
-&lt;li&gt;Implementing additional network segments for more complex scenarios&lt;/li&gt;
-&lt;li&gt;Expanding the hardware analysis capabilities&lt;/li&gt;
-&lt;li&gt;Adding more storage capacity for long-term data retention&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;[Image placeholder: Future equipment or expansion area]&lt;/em&gt;&lt;/p&gt;
-&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
-&lt;/h2&gt;&lt;p&gt;Building and maintaining this homelab has been an incredible journey in both technical learning and hands-on skill development. It provides a safe space to experiment, learn, and push the boundaries of what&amp;rsquo;s possible in cybersecurity research and education.&lt;/p&gt;
-&lt;p&gt;Whether you&amp;rsquo;re just starting your cybersecurity journey or looking to expand into specialized areas like ICS security, I encourage you to start building your own lab environment. Start small, grow gradually, and most importantly - have fun learning!&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Have questions about any of the equipment or setup? Feel free to reach out - I&amp;rsquo;m always happy to discuss homelab builds and cybersecurity infrastructure.&lt;/em&gt;&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>Resume</title>
-        <link>https://blog.ics.red/posts/resume/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://blog.ics.red/posts/resume/</guid>
-        <description>&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-&lt;!-- raw HTML omitted --&gt;
-</description>
-        </item>
-        <item>
-        <title>Advent of Code 2025: Solving Puzzles with Industrial Ladder Logic</title>
-        <link>https://blog.ics.red/posts/advent-of-code-2025-ladder-logic/</link>
-        <pubDate>Tue, 02 Dec 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://blog.ics.red/posts/advent-of-code-2025-ladder-logic/</guid>
-        <description>&lt;h2 id=&#34;the-challenge-advent-of-code-meets-industrial-automation&#34;&gt;The Challenge: Advent of Code Meets Industrial Automation
-&lt;/h2&gt;&lt;p&gt;What happens when you combine &lt;a class=&#34;link&#34; href=&#34;https://adventofcode.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Advent of Code&lt;/a&gt; with industrial control systems? Ladder logic solutions running on actual PLCs.&lt;/p&gt;
-&lt;p&gt;This year, I solved Advent of Code 2025 puzzles using &lt;strong&gt;ladder logic on an Allen-Bradley Micro870 PLC&lt;/strong&gt;, with a FactoryTalk Optix HMI for visualization.&lt;/p&gt;
-&lt;p&gt;Github Repo with Code: &lt;a class=&#34;link&#34; href=&#34;https://github.com/ladderlogix/Advent-of-Code-2025&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/ladderlogix/Advent-of-Code-2025&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;hardware-setup&#34;&gt;Hardware Setup
-&lt;/h2&gt;&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Component&lt;/th&gt;
-          &lt;th&gt;Model&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;PLC&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;Allen-Bradley Micro870 (2080-L70E-24QBBN)&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;HMI&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;FactoryTalk Optix&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;Communication&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;Ethernet/IP&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;day-1-secret-entrance&#34;&gt;Day 1: Secret Entrance
-&lt;/h2&gt;&lt;h3 id=&#34;the-problem&#34;&gt;The Problem
-&lt;/h3&gt;&lt;p&gt;You arrive at the secret entrance to the North Pole base, but the password has changed. A safe with a dial (numbers 0-99) holds the answer. Your puzzle input contains rotation instructions like &lt;code&gt;L68&lt;/code&gt; (left 68 clicks) or &lt;code&gt;R48&lt;/code&gt; (right 48 clicks).&lt;/p&gt;
-&lt;p&gt;The dial starts at &lt;strong&gt;50&lt;/strong&gt; and wraps around (left from 0 goes to 99, right from 99 goes to 0).&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Part 1&lt;/strong&gt;: Count how many times the dial &lt;strong&gt;ends&lt;/strong&gt; on position 0 after a rotation.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Part 2&lt;/strong&gt;: Count how many times the dial &lt;strong&gt;passes through or lands on&lt;/strong&gt; position 0 during ALL rotations (including mid-rotation).&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;My Answers&lt;/strong&gt;: Part 1 = &lt;strong&gt;1011&lt;/strong&gt;, Part 2 = &lt;strong&gt;5937&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;video-demonstrations&#34;&gt;Video Demonstrations
-&lt;/h2&gt;&lt;h3 id=&#34;day-1-part-1&#34;&gt;Day 1 Part 1
-&lt;/h3&gt;&lt;div class=&#34;video-wrapper&#34;&gt;
-    &lt;iframe loading=&#34;lazy&#34; 
-            src=&#34;https://www.youtube.com/embed/exmJLdwC1RU&#34; 
-            allowfullscreen 
-            title=&#34;YouTube Video&#34;
-    &gt;
-    &lt;/iframe&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&#34;day-1-part-2&#34;&gt;Day 1 Part 2
-&lt;/h3&gt;&lt;div class=&#34;video-wrapper&#34;&gt;
-    &lt;iframe loading=&#34;lazy&#34; 
-            src=&#34;https://www.youtube.com/embed/s28MHhT4mHE&#34; 
-            allowfullscreen 
-            title=&#34;YouTube Video&#34;
-    &gt;
-    &lt;/iframe&gt;
-&lt;/div&gt;
-
-&lt;hr&gt;
-&lt;h2 id=&#34;part-1-solution&#34;&gt;Part 1 Solution
-&lt;/h2&gt;&lt;p&gt;The algorithm processes 4,146 rotation instructions, tracking position on a circular 0-99 dial.&lt;/p&gt;
-&lt;h3 id=&#34;rung-0---reset&#34;&gt;Rung 0 - Reset
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung1.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 1&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-1---start-processing&#34;&gt;Rung 1 - Start Processing
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung2.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 2&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-2---check-if-complete&#34;&gt;Rung 2 - Check If Complete
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung3.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 3&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-3---get-direction-from-array&#34;&gt;Rung 3 - Get Direction From Array
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung4.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 4&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-4---get-distance-from-array&#34;&gt;Rung 4 - Get Distance From Array
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung5.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 5&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-5---add-direction--right&#34;&gt;Rung 5 - Add (Direction = Right)
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung5.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 5&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-6---subtract-direction--left&#34;&gt;Rung 6 - Subtract (Direction = Left)
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung6.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 6&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-7---modulo-wraparound&#34;&gt;Rung 7 - Modulo Wraparound
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung7.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 7&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-8---handle-negative-values&#34;&gt;Rung 8 - Handle Negative Values
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung8.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 8&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-9---count-zeros&#34;&gt;Rung 9 - Count Zeros
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung9.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 9&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-10---advance-step&#34;&gt;Rung 10 - Advance Step
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung10.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 10&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;part-2-solution&#34;&gt;Part 2 Solution
-&lt;/h2&gt;&lt;p&gt;Part 2 requires counting every time the dial crosses position 0, not just when it lands there. This adds significant complexity with 6 different cases to handle.&lt;/p&gt;
-&lt;h3 id=&#34;rung-11---zero-crossing-calculation&#34;&gt;Rung 11 - Zero Crossing Calculation
-&lt;/h3&gt;&lt;p&gt;This massive branching rung handles all the edge cases for counting zero crossings:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/part2/Rung11.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 11&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-12---accumulate-zero-crossings&#34;&gt;Rung 12 - Accumulate Zero Crossings
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/part2/Rung12.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 12&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rung-13---advance-step&#34;&gt;Rung 13 - Advance Step
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/part2/Rung13.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Rung 13&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;Stay tuned for more days of Advent of Code solved with ladder logic!&lt;/em&gt;&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>DNP3 Timing Attack: Weaponizing Time Synchronization in Industrial Control Systems</title>
-        <link>https://blog.ics.red/posts/dnp3-timing-attack/</link>
-        <pubDate>Thu, 14 Aug 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://blog.ics.red/posts/dnp3-timing-attack/</guid>
-        <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction
-&lt;/h2&gt;&lt;p&gt;Industrial Control Systems (ICS) rely heavily on accurate time synchronization for coordinating operations, maintaining event logs, and executing time-dependent control logic. The Distributed Network Protocol (DNP3), widely deployed in electric utilities and critical infrastructure, includes a time synchronization feature that, while essential for operations, can be exploited by adversaries to cause significant disruption.&lt;/p&gt;
-&lt;p&gt;I&amp;rsquo;ve developed a proof-of-concept tool that demonstrates how DNP3&amp;rsquo;s LAN time-sync procedure can be weaponized to send arbitrary timestamps to outstations, potentially compromising the integrity of time-dependent operations across critical infrastructure.&lt;/p&gt;
-&lt;h2 id=&#34;what-is-dnp3&#34;&gt;What is DNP3?
-&lt;/h2&gt;&lt;p&gt;DNP3 (Distributed Network Protocol 3) is a protocol commonly used in SCADA systems for communication between control centers and Remote Terminal Units (RTUs) or Intelligent Electronic Devices (IEDs). It&amp;rsquo;s particularly prevalent in:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Electric power transmission and distribution&lt;/li&gt;
-&lt;li&gt;Water and wastewater systems&lt;/li&gt;
-&lt;li&gt;Oil and gas pipelines&lt;/li&gt;
-&lt;li&gt;Transportation systems&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The protocol operates on standard ports (typically TCP 20000 and 19999), making it easily identifiable on ICS networks.&lt;/p&gt;
-&lt;h2 id=&#34;the-time-synchronization-vulnerability&#34;&gt;The Time Synchronization Vulnerability
-&lt;/h2&gt;&lt;p&gt;DNP3 includes a time synchronization mechanism (function code 0x17) that allows master stations to synchronize the internal clocks of outstation devices. While this feature is critical for maintaining accurate timestamps across distributed systems, it has several concerning characteristics:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Lack of Authentication&lt;/strong&gt;: DNP3&amp;rsquo;s time-sync messages typically lack cryptographic authentication&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Unrestricted Values&lt;/strong&gt;: The protocol accepts arbitrary timestamp values without validation&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Wide Impact&lt;/strong&gt;: A single malicious time-sync message can affect multiple dependent systems&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Silent Execution&lt;/strong&gt;: Time modifications may not trigger obvious alarms or alerts&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;attack-scenarios-and-impact&#34;&gt;Attack Scenarios and Impact
-&lt;/h2&gt;&lt;h3 id=&#34;1-operational-sequencing-disruption&#34;&gt;1. Operational Sequencing Disruption
-&lt;/h3&gt;&lt;p&gt;Many ICS operations depend on precise timing sequences. By manipulating timestamps:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Circuit breaker operations may execute out of sequence&lt;/li&gt;
-&lt;li&gt;Load shedding algorithms may make incorrect decisions&lt;/li&gt;
-&lt;li&gt;Automated protective relays may fail to coordinate properly&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;2-log-file-corruption-and-forensic-evasion&#34;&gt;2. Log File Corruption and Forensic Evasion
-&lt;/h3&gt;&lt;p&gt;Sending future timestamps causes:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Historical data to appear in the wrong temporal order&lt;/li&gt;
-&lt;li&gt;Forensic investigations to become significantly more difficult&lt;/li&gt;
-&lt;li&gt;Compliance violations due to inaccurate time-stamped records&lt;/li&gt;
-&lt;li&gt;Sequence of Events (SOE) logs to become unreliable&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;3-time-dependent-control-logic-manipulation&#34;&gt;3. Time-Dependent Control Logic Manipulation
-&lt;/h3&gt;&lt;p&gt;Systems relying on time-based conditions can be exploited:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Scheduled maintenance windows may be triggered prematurely&lt;/li&gt;
-&lt;li&gt;Time-of-use pricing mechanisms may be circumvented&lt;/li&gt;
-&lt;li&gt;Automated switching based on time schedules may malfunction&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;4-operator-confusion&#34;&gt;4. Operator Confusion
-&lt;/h3&gt;&lt;p&gt;Inconsistent timestamps across systems create:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Difficulty in correlating events across multiple devices&lt;/li&gt;
-&lt;li&gt;Reduced situational awareness during emergencies&lt;/li&gt;
-&lt;li&gt;Increased cognitive load on operators&lt;/li&gt;
-&lt;li&gt;Potential for incorrect manual interventions&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;the-tool-dnp3-timing-attack&#34;&gt;The Tool: DNP3 Timing Attack
-&lt;/h2&gt;&lt;p&gt;I developed a Rust-based command-line tool to demonstrate this attack vector. The tool provides:&lt;/p&gt;
-&lt;h3 id=&#34;features&#34;&gt;Features
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Arbitrary Timestamp Injection&lt;/strong&gt;: Send any timestamp value to target outstations&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Multiple Target Support&lt;/strong&gt;: Attack multiple RTUs simultaneously&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Port Flexibility&lt;/strong&gt;: Support for both standard and non-standard DNP3 ports&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Timing Control&lt;/strong&gt;: Configurable delays and timing patterns&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Rust Safety&lt;/strong&gt;: Memory-safe implementation with strong type guarantees&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/dnp3-help.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;DNP3 Timing Attack Tool Help&#34;
-	
-	
-&gt;
-&lt;em&gt;Command-line interface showing available options and usage&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;technical-implementation&#34;&gt;Technical Implementation
-&lt;/h3&gt;&lt;p&gt;The tool operates by:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Establishing a connection to the target DNP3 outstation&lt;/li&gt;
-&lt;li&gt;Crafting DNP3 application layer messages with time synchronization function codes&lt;/li&gt;
-&lt;li&gt;Injecting attacker-controlled timestamp values&lt;/li&gt;
-&lt;li&gt;Monitoring responses to confirm successful time modification&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/dnp3-attack-execution.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;DNP3 Attack in Action&#34;
-	
-	
-&gt;
-&lt;em&gt;Terminal output showing successful time synchronization attack&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;attack-demonstration&#34;&gt;Attack Demonstration
-&lt;/h3&gt;&lt;p&gt;The screenshots below show the tool in action against a test DNP3 outstation:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/dnp3-time-manipulation.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;DNP3 Time Manipulation&#34;
-	
-	
-&gt;
-&lt;em&gt;Sending arbitrary timestamp to target outstation&lt;/em&gt;&lt;/p&gt;
-&lt;h2 id=&#34;defensive-considerations&#34;&gt;Defensive Considerations
-&lt;/h2&gt;&lt;p&gt;Organizations deploying DNP3 should consider:&lt;/p&gt;
-&lt;h3 id=&#34;network-segmentation&#34;&gt;Network Segmentation
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Isolate DNP3 traffic to dedicated OT networks&lt;/li&gt;
-&lt;li&gt;Implement strict firewall rules limiting DNP3 access&lt;/li&gt;
-&lt;li&gt;Deploy unidirectional gateways where appropriate&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;authentication-and-encryption&#34;&gt;Authentication and Encryption
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Upgrade to DNP3 Secure Authentication (SAv5/SAv6) where possible&lt;/li&gt;
-&lt;li&gt;Implement encrypted tunnels (VPN/TLS) for DNP3 communications&lt;/li&gt;
-&lt;li&gt;Consider protocol-level authentication mechanisms&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;monitoring-and-detection&#34;&gt;Monitoring and Detection
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Monitor for unexpected time-sync messages&lt;/li&gt;
-&lt;li&gt;Implement anomaly detection for timestamp deviations&lt;/li&gt;
-&lt;li&gt;Correlate time synchronization events with authorized maintenance windows&lt;/li&gt;
-&lt;li&gt;Alert on time jumps exceeding defined thresholds&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;configuration-hardening&#34;&gt;Configuration Hardening
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Disable time synchronization on devices with internal time sources&lt;/li&gt;
-&lt;li&gt;Restrict which masters can perform time synchronization&lt;/li&gt;
-&lt;li&gt;Implement time-sync authorization at the device level&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;operational-security&#34;&gt;Operational Security
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Regularly audit time synchronization configurations&lt;/li&gt;
-&lt;li&gt;Maintain accurate network diagrams showing time-sync relationships&lt;/li&gt;
-&lt;li&gt;Include time manipulation scenarios in incident response plans&lt;/li&gt;
-&lt;li&gt;Train operators to recognize time-related anomalies&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;responsible-disclosure&#34;&gt;Responsible Disclosure
-&lt;/h2&gt;&lt;p&gt;This research is released for educational and authorized security testing purposes only. The tool should only be used:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;In authorized penetration testing engagements&lt;/li&gt;
-&lt;li&gt;In isolated laboratory environments&lt;/li&gt;
-&lt;li&gt;For defensive research and detection development&lt;/li&gt;
-&lt;li&gt;With explicit permission from system owners&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Unauthorized access to industrial control systems is illegal and potentially dangerous to public safety.&lt;/p&gt;
-&lt;h2 id=&#34;project-links&#34;&gt;Project Links
-&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;GitHub Repository&lt;/strong&gt;: &lt;a class=&#34;link&#34; href=&#34;https://github.com/ladderlogix/DNP3TimmingAttack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;DNP3TimmingAttack&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;License&lt;/strong&gt;: AGPL-3.0&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Language&lt;/strong&gt;: Rust&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion
-&lt;/h2&gt;&lt;p&gt;The DNP3 time synchronization attack demonstrates a critical but often overlooked attack vector in industrial control systems. While the attack is relatively straightforward to execute, its impact can be significant, affecting everything from operational safety to forensic investigations.&lt;/p&gt;
-&lt;p&gt;As critical infrastructure increasingly becomes a target for sophisticated adversaries, understanding and defending against attacks on fundamental protocol features like time synchronization is essential. This research aims to raise awareness of these risks and encourage the adoption of stronger security controls in ICS environments.&lt;/p&gt;
-&lt;p&gt;Organizations operating DNP3-based systems should evaluate their exposure to this attack vector and implement appropriate defensive measures based on their risk tolerance and operational requirements.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;em&gt;This post is part of my ongoing ICS security research. For more projects and research, visit the &lt;a class=&#34;link&#34; href=&#34;https://blog.ics.red/page/ics-projects/&#34; &gt;ICS Projects&lt;/a&gt; page.&lt;/em&gt;&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>Dangers of IoT Devices Presentation</title>
-        <link>https://blog.ics.red/posts/iot-presentation/</link>
-        <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://blog.ics.red/posts/iot-presentation/</guid>
-        <description>&lt;p&gt;This was a powerpoint slides for a presentation I gave to CvCISO coffee talk. You can download here &lt;a class=&#34;link&#34; href=&#34;https://bucket.ics.red/IoTPres.pptx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://bucket.ics.red/IoTPres.pptx&lt;/a&gt;&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>Blog</title>
-        <link>https://blog.ics.red/page/blog/</link>
-        <pubDate>Thu, 30 Jan 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://blog.ics.red/page/blog/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>WWHF 2024 Badge Hacking Writeup</title>
-        <link>https://blog.ics.red/posts/wwhf-2024-badge/</link>
-        <pubDate>Sun, 20 Oct 2024 00:00:00 +0000</pubDate>
-        
-        <guid>https://blog.ics.red/posts/wwhf-2024-badge/</guid>
-        <description>&lt;h1 id=&#34;wwhf-2024-badge-hacking-writeup&#34;&gt;WWHF 2024 Badge Hacking WriteUp
-&lt;/h1&gt;&lt;p&gt;Should automatically redirect to site if not.
-Go to wwhf2024.ics.red&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>CyberForce 2024 Adventure Writeup</title>
-        <link>https://blog.ics.red/posts/cyberforce-adventure-2024/</link>
-        <pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate>
-        
-        <guid>https://blog.ics.red/posts/cyberforce-adventure-2024/</guid>
-        <description>&lt;p&gt;Should redirct you to writeup site&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>About</title>
-        <link>https://blog.ics.red/page/about/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://blog.ics.red/page/about/</guid>
-        <description>&lt;p&gt;I am a freshman at Purdue University interested in cybersecurity and operational technology (OT).&lt;/p&gt;
-&lt;p&gt;Github&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ladderlogix&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/ladderlogix&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Linkedin&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://linkedin.com/in/stephenglombicki&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://linkedin.com/in/stephenglombicki&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Discord&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Ladderlogic&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        </item>
-        <item>
-        <title>Search</title>
-        <link>https://blog.ics.red/page/search/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://blog.ics.red/page/search/</guid>
-        <description></description>
-        </item>
-        
-    </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Stephen's blog</title><link>https://blog.ics.red/</link><description>Recent content on Stephen's blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 02 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ics.red/index.xml" rel="self" type="application/rss+xml"/><item><title>Homelab</title><link>https://blog.ics.red/posts/homelab/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://blog.ics.red/posts/homelab/</guid><description>&lt;h1 id="my-homelab-a-cybersecurity-professionals-hardware-paradise">My Homelab: A Cybersecurity Professional&amp;rsquo;s Hardware Paradise
+&lt;/h1>&lt;p>Welcome to my homelab - a carefully crafted environment that serves as both my learning playground and professional development space. What started as a simple setup has evolved into a comprehensive infrastructure that supports everything from virtualization and networking to industrial control systems and hardware hacking.&lt;/p>
+&lt;p>&lt;em>[Image placeholder: Overview shot of the entire homelab setup]&lt;/em>&lt;/p>
+&lt;h2 id="the-heart-of-operations-central-server-rack">The Heart of Operations: Central Server Rack
+&lt;/h2>&lt;p>My homelab is anchored by a compact central server rack that houses the core networking and compute infrastructure. This rack serves as the nerve center for all operations.&lt;/p>
+&lt;h3 id="core-infrastructure">Core Infrastructure
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>HPE ProLiant DL350 Gen10&lt;/strong>: My primary ESXi hypervisor server, handling the majority of virtual machines and services&lt;/li>
+&lt;li>&lt;strong>4TB SSD NAS&lt;/strong>: Connected via 10Gb link for high-speed external storage, providing fast access to VM datastores and backup storage&lt;/li>
+&lt;li>&lt;strong>Cisco 2960L Switch&lt;/strong>: The main distribution switch that aggregates connections to all devices throughout the lab&lt;/li>
+&lt;li>&lt;strong>pfSense Firewall&lt;/strong>: My primary security gateway connecting to the ISP, providing advanced firewall capabilities, VPN access, and network segmentation&lt;/li>
+&lt;li>&lt;strong>Wireless Access Point&lt;/strong>: Ensuring wireless connectivity throughout the lab space&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>[Image placeholder: Close-up of the central server rack showing the organized cable management and equipment]&lt;/em>&lt;/p>
+&lt;p>The 10Gb connection between the ESXi host and NAS ensures that storage doesn&amp;rsquo;t become a bottleneck for VM performance, while the Cisco switch provides enterprise-grade switching with VLAN capabilities for network segmentation.&lt;/p>
+&lt;h2 id="the-workshop-full-height-server-rack--workbench">The Workshop: Full-Height Server Rack &amp;amp; Workbench
+&lt;/h2>&lt;p>Recently, I expanded my setup with a full-height server rack that doubles as my primary workbench. This addition has transformed my capability to work on hardware projects and conduct hands-on security research.&lt;/p>
+&lt;h3 id="power-and-safety-controls">Power and Safety Controls
+&lt;/h3>&lt;p>At the top of the rack sits an &lt;strong>SEL-351S protective relay&lt;/strong>, a professional-grade power system protection device that controls the bench power through a breaker system while providing comprehensive monitoring. This ensures safe operation of all equipment and allows me to practice with industrial-grade protection systems.&lt;/p>
+&lt;p>&lt;em>[Image placeholder: SEL-351S relay unit and power distribution setup]&lt;/em>&lt;/p>
+&lt;h3 id="hardware-hacking-station">Hardware Hacking Station
+&lt;/h3>&lt;p>The workbench portion is equipped for serious hardware analysis and modification:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Digital Oscilloscope&lt;/strong>: For signal analysis and reverse engineering&lt;/li>
+&lt;li>&lt;strong>Soldering station and precision tools&lt;/strong>: For component-level work&lt;/li>
+&lt;li>&lt;strong>Logic analyzers and multimeters&lt;/strong>: For circuit analysis&lt;/li>
+&lt;li>&lt;strong>Anti-static workspace&lt;/strong>: Proper ESD protection for sensitive components&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>[Image placeholder: Workbench setup with oscilloscope, tools, and current project]&lt;/em>&lt;/p>
+&lt;p>This space allows me to dive deep into hardware security, firmware analysis, and IoT device research - skills that are increasingly valuable in cybersecurity.&lt;/p>
+&lt;h2 id="industrial-control-systems-ics-laboratory">Industrial Control Systems (ICS) Laboratory
+&lt;/h2>&lt;p>One of the most unique aspects of my homelab is the dedicated ICS wall - a plywood-mounted display of industrial control systems that provides hands-on experience with operational technology (OT) security.&lt;/p>
+&lt;p>&lt;em>[Image placeholder: Full view of the ICS wall showing all mounted devices]&lt;/em>&lt;/p>
+&lt;h3 id="current-ics-equipment">Current ICS Equipment
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>Arduino OPTA&lt;/strong>: A modern industrial-grade programmable logic controller that bridges IT and OT worlds&lt;/li>
+&lt;li>&lt;strong>Allen-Bradley MicroLogix 1100&lt;/strong>: A classic PLC commonly found in industrial environments&lt;/li>
+&lt;li>&lt;strong>Cisco ISA Firewall&lt;/strong>: Specialized security appliance for industrial networks&lt;/li>
+&lt;li>&lt;strong>Honeywell Cipher 50&lt;/strong>: Industrial communication and control device&lt;/li>
+&lt;li>&lt;strong>Schneider Electric PLC&lt;/strong>: Additional programmable logic controller for diverse testing scenarios&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>[Image placeholder: Close-up shots of individual ICS components]&lt;/em>&lt;/p>
+&lt;p>This setup allows me to:&lt;/p>
+&lt;ul>
+&lt;li>Practice ICS security assessment techniques&lt;/li>
+&lt;li>Test industrial protocol analysis tools&lt;/li>
+&lt;li>Experiment with OT network segmentation&lt;/li>
+&lt;li>Develop skills in both offensive and defensive ICS security&lt;/li>
+&lt;/ul>
+&lt;h2 id="network-security-and-monitoring">Network Security and Monitoring
+&lt;/h2>&lt;p>Security monitoring is integrated throughout the infrastructure with &lt;strong>Security Onion&lt;/strong> running on VMware, connected to a span port on the Cisco switch. This provides comprehensive network visibility and allows me to:&lt;/p>
+&lt;ul>
+&lt;li>Monitor all network traffic for suspicious activity&lt;/li>
+&lt;li>Practice with enterprise security tools&lt;/li>
+&lt;li>Develop custom detection rules&lt;/li>
+&lt;li>Analyze attack patterns and techniques&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>[Image placeholder: Security Onion dashboard or network monitoring display]&lt;/em>&lt;/p>
+&lt;h2 id="why-this-setup-matters">Why This Setup Matters
+&lt;/h2>&lt;p>This homelab represents more than just a collection of hardware - it&amp;rsquo;s a comprehensive learning environment that spans:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Enterprise IT&lt;/strong>: Through virtualization and networking infrastructure&lt;/li>
+&lt;li>&lt;strong>Cybersecurity&lt;/strong>: Via monitoring, analysis, and testing capabilities&lt;/li>
+&lt;li>&lt;strong>Industrial Security&lt;/strong>: Through the ICS laboratory components&lt;/li>
+&lt;li>&lt;strong>Hardware Security&lt;/strong>: Via the dedicated workbench and analysis tools&lt;/li>
+&lt;/ul>
+&lt;p>The combination allows me to develop skills across the full spectrum of cybersecurity domains, from traditional IT security to the growing field of OT/ICS security.&lt;/p>
+&lt;h2 id="future-expansion-plans">Future Expansion Plans
+&lt;/h2>&lt;p>I&amp;rsquo;m always looking to expand and improve the lab. Current plans include:&lt;/p>
+&lt;ul>
+&lt;li>Adding more diverse ICS equipment from different manufacturers&lt;/li>
+&lt;li>Implementing additional network segments for more complex scenarios&lt;/li>
+&lt;li>Expanding the hardware analysis capabilities&lt;/li>
+&lt;li>Adding more storage capacity for long-term data retention&lt;/li>
+&lt;/ul>
+&lt;p>&lt;em>[Image placeholder: Future equipment or expansion area]&lt;/em>&lt;/p>
+&lt;h2 id="conclusion">Conclusion
+&lt;/h2>&lt;p>Building and maintaining this homelab has been an incredible journey in both technical learning and hands-on skill development. It provides a safe space to experiment, learn, and push the boundaries of what&amp;rsquo;s possible in cybersecurity research and education.&lt;/p>
+&lt;p>Whether you&amp;rsquo;re just starting your cybersecurity journey or looking to expand into specialized areas like ICS security, I encourage you to start building your own lab environment. Start small, grow gradually, and most importantly - have fun learning!&lt;/p>
+&lt;hr>
+&lt;p>&lt;em>Have questions about any of the equipment or setup? Feel free to reach out - I&amp;rsquo;m always happy to discuss homelab builds and cybersecurity infrastructure.&lt;/em>&lt;/p></description></item><item><title>Resume</title><link>https://blog.ics.red/posts/resume/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://blog.ics.red/posts/resume/</guid><description>&lt;!-- raw HTML omitted -->
+&lt;!-- raw HTML omitted -->
+&lt;!-- raw HTML omitted --></description></item><item><title>Advent of Code 2025: Solving Puzzles with Industrial Ladder Logic</title><link>https://blog.ics.red/posts/advent-of-code-2025-ladder-logic/</link><pubDate>Tue, 02 Dec 2025 00:00:00 +0000</pubDate><guid>https://blog.ics.red/posts/advent-of-code-2025-ladder-logic/</guid><description>&lt;h2 id="the-challenge-advent-of-code-meets-industrial-automation">The Challenge: Advent of Code Meets Industrial Automation
+&lt;/h2>&lt;p>What happens when you combine &lt;a class="link" href="https://adventofcode.com/" target="_blank" rel="noopener"
+>Advent of Code&lt;/a> with industrial control systems? Ladder logic solutions running on actual PLCs.&lt;/p>
+&lt;p>This year, I solved Advent of Code 2025 puzzles using &lt;strong>ladder logic on an Allen-Bradley Micro870 PLC&lt;/strong>, with a FactoryTalk Optix HMI for visualization.&lt;/p>
+&lt;p>Github Repo with Code: &lt;a class="link" href="https://github.com/ladderlogix/Advent-of-Code-2025" target="_blank" rel="noopener"
+>https://github.com/ladderlogix/Advent-of-Code-2025&lt;/a>&lt;/p>
+&lt;hr>
+&lt;h2 id="hardware-setup">Hardware Setup
+&lt;/h2>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Component&lt;/th>
+&lt;th>Model&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>PLC&lt;/strong>&lt;/td>
+&lt;td>Allen-Bradley Micro870 (2080-L70E-24QBBN)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>HMI&lt;/strong>&lt;/td>
+&lt;td>FactoryTalk Optix&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>Communication&lt;/strong>&lt;/td>
+&lt;td>Ethernet/IP&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h2 id="day-1-secret-entrance">Day 1: Secret Entrance
+&lt;/h2>&lt;h3 id="the-problem">The Problem
+&lt;/h3>&lt;p>You arrive at the secret entrance to the North Pole base, but the password has changed. A safe with a dial (numbers 0-99) holds the answer. Your puzzle input contains rotation instructions like &lt;code>L68&lt;/code> (left 68 clicks) or &lt;code>R48&lt;/code> (right 48 clicks).&lt;/p>
+&lt;p>The dial starts at &lt;strong>50&lt;/strong> and wraps around (left from 0 goes to 99, right from 99 goes to 0).&lt;/p>
+&lt;p>&lt;strong>Part 1&lt;/strong>: Count how many times the dial &lt;strong>ends&lt;/strong> on position 0 after a rotation.&lt;/p>
+&lt;p>&lt;strong>Part 2&lt;/strong>: Count how many times the dial &lt;strong>passes through or lands on&lt;/strong> position 0 during ALL rotations (including mid-rotation).&lt;/p>
+&lt;hr>
+&lt;h2 id="video-demonstrations">Video Demonstrations
+&lt;/h2>&lt;h3 id="day-1-part-1">Day 1 Part 1
+&lt;/h3>&lt;div class="video-wrapper">
+&lt;iframe loading="lazy"
+src="https://www.youtube.com/embed/exmJLdwC1RU"
+allowfullscreen
+title="YouTube Video"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;h3 id="day-1-part-2">Day 1 Part 2
+&lt;/h3>&lt;div class="video-wrapper">
+&lt;iframe loading="lazy"
+src="https://www.youtube.com/embed/s28MHhT4mHE"
+allowfullscreen
+title="YouTube Video"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;hr>
+&lt;h2 id="part-1-solution">Part 1 Solution
+&lt;/h2>&lt;p>The algorithm processes 4,146 rotation instructions, tracking position on a circular 0-99 dial.&lt;/p>
+&lt;h3 id="rung-0---reset">Rung 0 - Reset
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung1.png"
+loading="lazy"
+alt="Rung 1"
+>&lt;/p>
+&lt;h3 id="rung-1---start-processing">Rung 1 - Start Processing
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung2.png"
+loading="lazy"
+alt="Rung 2"
+>&lt;/p>
+&lt;h3 id="rung-2---check-if-complete">Rung 2 - Check If Complete
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung3.png"
+loading="lazy"
+alt="Rung 3"
+>&lt;/p>
+&lt;h3 id="rung-3---get-direction-from-array">Rung 3 - Get Direction From Array
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung4.png"
+loading="lazy"
+alt="Rung 4"
+>&lt;/p>
+&lt;h3 id="rung-4---get-distance-from-array">Rung 4 - Get Distance From Array
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung5.png"
+loading="lazy"
+alt="Rung 5"
+>&lt;/p>
+&lt;h3 id="rung-5---add-direction--right">Rung 5 - Add (Direction = Right)
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung5.png"
+loading="lazy"
+alt="Rung 5"
+>&lt;/p>
+&lt;h3 id="rung-6---subtract-direction--left">Rung 6 - Subtract (Direction = Left)
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung6.png"
+loading="lazy"
+alt="Rung 6"
+>&lt;/p>
+&lt;h3 id="rung-7---modulo-wraparound">Rung 7 - Modulo Wraparound
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung7.png"
+loading="lazy"
+alt="Rung 7"
+>&lt;/p>
+&lt;h3 id="rung-8---handle-negative-values">Rung 8 - Handle Negative Values
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung8.png"
+loading="lazy"
+alt="Rung 8"
+>&lt;/p>
+&lt;h3 id="rung-9---count-zeros">Rung 9 - Count Zeros
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung9.png"
+loading="lazy"
+alt="Rung 9"
+>&lt;/p>
+&lt;h3 id="rung-10---advance-step">Rung 10 - Advance Step
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/Rung10.png"
+loading="lazy"
+alt="Rung 10"
+>&lt;/p>
+&lt;hr>
+&lt;h2 id="part-2-solution">Part 2 Solution
+&lt;/h2>&lt;p>Part 2 requires counting every time the dial crosses position 0, not just when it lands there. This adds significant complexity with 6 different cases to handle.&lt;/p>
+&lt;h3 id="rung-11---zero-crossing-calculation">Rung 11 - Zero Crossing Calculation
+&lt;/h3>&lt;p>This massive branching rung handles all the edge cases for counting zero crossings:&lt;/p>
+&lt;p>&lt;img src="https://blog.ics.red/images/aoc/part2/Rung11.png"
+loading="lazy"
+alt="Rung 11"
+>&lt;/p>
+&lt;h3 id="rung-12---accumulate-zero-crossings">Rung 12 - Accumulate Zero Crossings
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/part2/Rung12.png"
+loading="lazy"
+alt="Rung 12"
+>&lt;/p>
+&lt;h3 id="rung-13---advance-step">Rung 13 - Advance Step
+&lt;/h3>&lt;p>&lt;img src="https://blog.ics.red/images/aoc/part2/Rung13.png"
+loading="lazy"
+alt="Rung 13"
+>&lt;/p>
+&lt;hr>
+&lt;p>&lt;em>Stay tuned for more days of Advent of Code solved with ladder logic!&lt;/em>&lt;/p></description></item><item><title>DNP3 Timing Attack: Weaponizing Time Synchronization in Industrial Control Systems</title><link>https://blog.ics.red/posts/dnp3-timing-attack/</link><pubDate>Thu, 14 Aug 2025 00:00:00 +0000</pubDate><guid>https://blog.ics.red/posts/dnp3-timing-attack/</guid><description>&lt;h2 id="introduction">Introduction
+&lt;/h2>&lt;p>Industrial Control Systems (ICS) rely heavily on accurate time synchronization for coordinating operations, maintaining event logs, and executing time-dependent control logic. The Distributed Network Protocol (DNP3), widely deployed in electric utilities and critical infrastructure, includes a time synchronization feature that, while essential for operations, can be exploited by adversaries to cause significant disruption.&lt;/p>
+&lt;p>I&amp;rsquo;ve developed a proof-of-concept tool that demonstrates how DNP3&amp;rsquo;s LAN time-sync procedure can be weaponized to send arbitrary timestamps to outstations, potentially compromising the integrity of time-dependent operations across critical infrastructure.&lt;/p>
+&lt;h2 id="what-is-dnp3">What is DNP3?
+&lt;/h2>&lt;p>DNP3 (Distributed Network Protocol 3) is a protocol commonly used in SCADA systems for communication between control centers and Remote Terminal Units (RTUs) or Intelligent Electronic Devices (IEDs). It&amp;rsquo;s particularly prevalent in:&lt;/p>
+&lt;ul>
+&lt;li>Electric power transmission and distribution&lt;/li>
+&lt;li>Water and wastewater systems&lt;/li>
+&lt;li>Oil and gas pipelines&lt;/li>
+&lt;li>Transportation systems&lt;/li>
+&lt;/ul>
+&lt;p>The protocol operates on standard ports (typically TCP 20000 and 19999), making it easily identifiable on ICS networks.&lt;/p>
+&lt;h2 id="the-time-synchronization-vulnerability">The Time Synchronization Vulnerability
+&lt;/h2>&lt;p>DNP3 includes a time synchronization mechanism (function code 0x17) that allows master stations to synchronize the internal clocks of outstation devices. While this feature is critical for maintaining accurate timestamps across distributed systems, it has several concerning characteristics:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Lack of Authentication&lt;/strong>: DNP3&amp;rsquo;s time-sync messages typically lack cryptographic authentication&lt;/li>
+&lt;li>&lt;strong>Unrestricted Values&lt;/strong>: The protocol accepts arbitrary timestamp values without validation&lt;/li>
+&lt;li>&lt;strong>Wide Impact&lt;/strong>: A single malicious time-sync message can affect multiple dependent systems&lt;/li>
+&lt;li>&lt;strong>Silent Execution&lt;/strong>: Time modifications may not trigger obvious alarms or alerts&lt;/li>
+&lt;/ol>
+&lt;h2 id="attack-scenarios-and-impact">Attack Scenarios and Impact
+&lt;/h2>&lt;h3 id="1-operational-sequencing-disruption">1. Operational Sequencing Disruption
+&lt;/h3>&lt;p>Many ICS operations depend on precise timing sequences. By manipulating timestamps:&lt;/p>
+&lt;ul>
+&lt;li>Circuit breaker operations may execute out of sequence&lt;/li>
+&lt;li>Load shedding algorithms may make incorrect decisions&lt;/li>
+&lt;li>Automated protective relays may fail to coordinate properly&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-log-file-corruption-and-forensic-evasion">2. Log File Corruption and Forensic Evasion
+&lt;/h3>&lt;p>Sending future timestamps causes:&lt;/p>
+&lt;ul>
+&lt;li>Historical data to appear in the wrong temporal order&lt;/li>
+&lt;li>Forensic investigations to become significantly more difficult&lt;/li>
+&lt;li>Compliance violations due to inaccurate time-stamped records&lt;/li>
+&lt;li>Sequence of Events (SOE) logs to become unreliable&lt;/li>
+&lt;/ul>
+&lt;h3 id="3-time-dependent-control-logic-manipulation">3. Time-Dependent Control Logic Manipulation
+&lt;/h3>&lt;p>Systems relying on time-based conditions can be exploited:&lt;/p>
+&lt;ul>
+&lt;li>Scheduled maintenance windows may be triggered prematurely&lt;/li>
+&lt;li>Time-of-use pricing mechanisms may be circumvented&lt;/li>
+&lt;li>Automated switching based on time schedules may malfunction&lt;/li>
+&lt;/ul>
+&lt;h3 id="4-operator-confusion">4. Operator Confusion
+&lt;/h3>&lt;p>Inconsistent timestamps across systems create:&lt;/p>
+&lt;ul>
+&lt;li>Difficulty in correlating events across multiple devices&lt;/li>
+&lt;li>Reduced situational awareness during emergencies&lt;/li>
+&lt;li>Increased cognitive load on operators&lt;/li>
+&lt;li>Potential for incorrect manual interventions&lt;/li>
+&lt;/ul>
+&lt;h2 id="the-tool-dnp3-timing-attack">The Tool: DNP3 Timing Attack
+&lt;/h2>&lt;p>I developed a Rust-based command-line tool to demonstrate this attack vector. The tool provides:&lt;/p>
+&lt;h3 id="features">Features
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>Arbitrary Timestamp Injection&lt;/strong>: Send any timestamp value to target outstations&lt;/li>
+&lt;li>&lt;strong>Multiple Target Support&lt;/strong>: Attack multiple RTUs simultaneously&lt;/li>
+&lt;li>&lt;strong>Port Flexibility&lt;/strong>: Support for both standard and non-standard DNP3 ports&lt;/li>
+&lt;li>&lt;strong>Timing Control&lt;/strong>: Configurable delays and timing patterns&lt;/li>
+&lt;li>&lt;strong>Rust Safety&lt;/strong>: Memory-safe implementation with strong type guarantees&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://blog.ics.red/images/dnp3-help.png"
+loading="lazy"
+alt="DNP3 Timing Attack Tool Help"
+>
+&lt;em>Command-line interface showing available options and usage&lt;/em>&lt;/p>
+&lt;h3 id="technical-implementation">Technical Implementation
+&lt;/h3>&lt;p>The tool operates by:&lt;/p>
+&lt;ol>
+&lt;li>Establishing a connection to the target DNP3 outstation&lt;/li>
+&lt;li>Crafting DNP3 application layer messages with time synchronization function codes&lt;/li>
+&lt;li>Injecting attacker-controlled timestamp values&lt;/li>
+&lt;li>Monitoring responses to confirm successful time modification&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://blog.ics.red/images/dnp3-attack-execution.png"
+loading="lazy"
+alt="DNP3 Attack in Action"
+>
+&lt;em>Terminal output showing successful time synchronization attack&lt;/em>&lt;/p>
+&lt;h3 id="attack-demonstration">Attack Demonstration
+&lt;/h3>&lt;p>The screenshots below show the tool in action against a test DNP3 outstation:&lt;/p>
+&lt;p>&lt;img src="https://blog.ics.red/images/dnp3-time-manipulation.png"
+loading="lazy"
+alt="DNP3 Time Manipulation"
+>
+&lt;em>Sending arbitrary timestamp to target outstation&lt;/em>&lt;/p>
+&lt;h2 id="defensive-considerations">Defensive Considerations
+&lt;/h2>&lt;p>Organizations deploying DNP3 should consider:&lt;/p>
+&lt;h3 id="network-segmentation">Network Segmentation
+&lt;/h3>&lt;ul>
+&lt;li>Isolate DNP3 traffic to dedicated OT networks&lt;/li>
+&lt;li>Implement strict firewall rules limiting DNP3 access&lt;/li>
+&lt;li>Deploy unidirectional gateways where appropriate&lt;/li>
+&lt;/ul>
+&lt;h3 id="authentication-and-encryption">Authentication and Encryption
+&lt;/h3>&lt;ul>
+&lt;li>Upgrade to DNP3 Secure Authentication (SAv5/SAv6) where possible&lt;/li>
+&lt;li>Implement encrypted tunnels (VPN/TLS) for DNP3 communications&lt;/li>
+&lt;li>Consider protocol-level authentication mechanisms&lt;/li>
+&lt;/ul>
+&lt;h3 id="monitoring-and-detection">Monitoring and Detection
+&lt;/h3>&lt;ul>
+&lt;li>Monitor for unexpected time-sync messages&lt;/li>
+&lt;li>Implement anomaly detection for timestamp deviations&lt;/li>
+&lt;li>Correlate time synchronization events with authorized maintenance windows&lt;/li>
+&lt;li>Alert on time jumps exceeding defined thresholds&lt;/li>
+&lt;/ul>
+&lt;h3 id="configuration-hardening">Configuration Hardening
+&lt;/h3>&lt;ul>
+&lt;li>Disable time synchronization on devices with internal time sources&lt;/li>
+&lt;li>Restrict which masters can perform time synchronization&lt;/li>
+&lt;li>Implement time-sync authorization at the device level&lt;/li>
+&lt;/ul>
+&lt;h3 id="operational-security">Operational Security
+&lt;/h3>&lt;ul>
+&lt;li>Regularly audit time synchronization configurations&lt;/li>
+&lt;li>Maintain accurate network diagrams showing time-sync relationships&lt;/li>
+&lt;li>Include time manipulation scenarios in incident response plans&lt;/li>
+&lt;li>Train operators to recognize time-related anomalies&lt;/li>
+&lt;/ul>
+&lt;h2 id="responsible-disclosure">Responsible Disclosure
+&lt;/h2>&lt;p>This research is released for educational and authorized security testing purposes only. The tool should only be used:&lt;/p>
+&lt;ul>
+&lt;li>In authorized penetration testing engagements&lt;/li>
+&lt;li>In isolated laboratory environments&lt;/li>
+&lt;li>For defensive research and detection development&lt;/li>
+&lt;li>With explicit permission from system owners&lt;/li>
+&lt;/ul>
+&lt;p>Unauthorized access to industrial control systems is illegal and potentially dangerous to public safety.&lt;/p>
+&lt;h2 id="project-links">Project Links
+&lt;/h2>&lt;ul>
+&lt;li>&lt;strong>GitHub Repository&lt;/strong>: &lt;a class="link" href="https://github.com/ladderlogix/DNP3TimmingAttack" target="_blank" rel="noopener"
+>DNP3TimmingAttack&lt;/a>&lt;/li>
+&lt;li>&lt;strong>License&lt;/strong>: AGPL-3.0&lt;/li>
+&lt;li>&lt;strong>Language&lt;/strong>: Rust&lt;/li>
+&lt;/ul>
+&lt;h2 id="conclusion">Conclusion
+&lt;/h2>&lt;p>The DNP3 time synchronization attack demonstrates a critical but often overlooked attack vector in industrial control systems. While the attack is relatively straightforward to execute, its impact can be significant, affecting everything from operational safety to forensic investigations.&lt;/p>
+&lt;p>As critical infrastructure increasingly becomes a target for sophisticated adversaries, understanding and defending against attacks on fundamental protocol features like time synchronization is essential. This research aims to raise awareness of these risks and encourage the adoption of stronger security controls in ICS environments.&lt;/p>
+&lt;p>Organizations operating DNP3-based systems should evaluate their exposure to this attack vector and implement appropriate defensive measures based on their risk tolerance and operational requirements.&lt;/p>
+&lt;hr>
+&lt;p>&lt;em>This post is part of my ongoing ICS security research. For more projects and research, visit the &lt;a class="link" href="https://blog.ics.red/page/ics-projects/" >ICS Projects&lt;/a> page.&lt;/em>&lt;/p></description></item><item><title>Dangers of IoT Devices Presentation</title><link>https://blog.ics.red/posts/iot-presentation/</link><pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate><guid>https://blog.ics.red/posts/iot-presentation/</guid><description>&lt;p>This was a powerpoint slides for a presentation I gave to CvCISO coffee talk. You can download here &lt;a class="link" href="https://bucket.ics.red/IoTPres.pptx" target="_blank" rel="noopener"
+>https://bucket.ics.red/IoTPres.pptx&lt;/a>&lt;/p></description></item><item><title>Blog</title><link>https://blog.ics.red/page/blog/</link><pubDate>Thu, 30 Jan 2025 00:00:00 +0000</pubDate><guid>https://blog.ics.red/page/blog/</guid><description/></item><item><title>WWHF 2024 Badge Hacking Writeup</title><link>https://blog.ics.red/posts/wwhf-2024-badge/</link><pubDate>Sun, 20 Oct 2024 00:00:00 +0000</pubDate><guid>https://blog.ics.red/posts/wwhf-2024-badge/</guid><description>&lt;h1 id="wwhf-2024-badge-hacking-writeup">WWHF 2024 Badge Hacking WriteUp
+&lt;/h1>&lt;p>Should automatically redirect to site if not.
+Go to wwhf2024.ics.red&lt;/p></description></item><item><title>CyberForce 2024 Adventure Writeup</title><link>https://blog.ics.red/posts/cyberforce-adventure-2024/</link><pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate><guid>https://blog.ics.red/posts/cyberforce-adventure-2024/</guid><description>&lt;p>Should redirct you to writeup site&lt;/p></description></item><item><title>About</title><link>https://blog.ics.red/page/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://blog.ics.red/page/about/</guid><description>&lt;p>I am a freshman at Purdue University interested in cybersecurity and operational technology (OT).&lt;/p>
+&lt;p>Github&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://github.com/ladderlogix" target="_blank" rel="noopener"
+>https://github.com/ladderlogix&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Linkedin&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://linkedin.com/in/stephenglombicki" target="_blank" rel="noopener"
+>https://linkedin.com/in/stephenglombicki&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Discord&lt;/p>
+&lt;ul>
+&lt;li>Ladderlogic&lt;/li>
+&lt;/ul></description></item><item><title>Search</title><link>https://blog.ics.red/page/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://blog.ics.red/page/search/</guid><description/></item></channel></rss>
