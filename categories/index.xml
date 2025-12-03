@@ -6,10 +6,26 @@
         <description>Recent content in Categories on Stephen&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sat, 22 Nov 2025 12:00:00 -0500</lastBuildDate><atom:link href="https://blog.ics.red/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 02 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.ics.red/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Ladder Logic</title>
+        <link>https://blog.ics.red/categories/ladder-logic/</link>
+        <pubDate>Tue, 02 Dec 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ics.red/categories/ladder-logic/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Programming</title>
+        <link>https://blog.ics.red/categories/programming/</link>
+        <pubDate>Tue, 02 Dec 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://blog.ics.red/categories/programming/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>ICS Security</title>
         <link>https://blog.ics.red/categories/ics-security/</link>
-        <pubDate>Sat, 22 Nov 2025 12:00:00 -0500</pubDate>
+        <pubDate>Thu, 14 Aug 2025 00:00:00 +0000</pubDate>
         
         <guid>https://blog.ics.red/categories/ics-security/</guid>
         <description></description>
@@ -17,17 +33,9 @@
         <item>
         <title>Research</title>
         <link>https://blog.ics.red/categories/research/</link>
-        <pubDate>Sat, 22 Nov 2025 12:00:00 -0500</pubDate>
+        <pubDate>Thu, 14 Aug 2025 00:00:00 +0000</pubDate>
         
         <guid>https://blog.ics.red/categories/research/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Vulnerability Research</title>
-        <link>https://blog.ics.red/categories/vulnerability-research/</link>
-        <pubDate>Sat, 22 Nov 2025 12:00:00 -0500</pubDate>
-        
-        <guid>https://blog.ics.red/categories/vulnerability-research/</guid>
         <description></description>
         </item>
         <item>
